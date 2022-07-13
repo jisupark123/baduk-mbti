@@ -1,0 +1,23 @@
+.switch {
+  width: 45px;
+  height: 30px;
+  background-color: $gray;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.switch-on {
+  justify-content: flex-end;
+  background-color: $indigo;
+}
+
+.handle {
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border-radius: 40px;
+}

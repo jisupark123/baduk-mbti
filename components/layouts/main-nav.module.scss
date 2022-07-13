@@ -1,0 +1,28 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $nav-height;
+}
+.innerNav {
+  width: $desktop-nav-width;
+  height: 100%;
+  @include flex-between;
+  margin: 0 auto;
+}
+.logo {
+  font-size: 2rem;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  button {
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
+}
+.post-upload-btn {
+  // margin-right: 1rem;
+  // font-size: 2rem;
+}

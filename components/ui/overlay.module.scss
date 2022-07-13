@@ -1,0 +1,23 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: $backdrop-z_index;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  .closeBtn {
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    font-size: 2rem;
+    color: $white;
+  }
+}
+
+.modal {
+  position: fixed;
+
+  z-index: $modal-z_index;
+}

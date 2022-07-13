@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 200px;
+  height: 50px;
+
+  .contents {
+    font-size: 1.5rem;
+  }
+}
+
+.successed {
+  background-color: $success;
+}
+.failed {
+  background-color: $warning;
+  //   background-color: $danger;
+}
