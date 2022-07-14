@@ -13,8 +13,8 @@ interface QuestionProps {
   clickedTheme?: Theme;
 }
 
-const Question: NextPage<QuestionProps> = ({ clickedTheme }) => {
-  const [theme, setTheme] = useState(clickedTheme);
+const Question: NextPage<QuestionProps> = () => {
+  const [theme, setTheme] = useState<Theme>('red');
   const [question1, setQuestion1] = useState<'E' | 'I' | null>(null);
   const [question2, setQuestion2] = useState<'N' | 'S' | null>(null);
   const [question3, setQuestion3] = useState<'F' | 'T' | null>(null);
@@ -29,11 +29,9 @@ const Question: NextPage<QuestionProps> = ({ clickedTheme }) => {
     router.reload();
   }
   useEffect(() => {
-    if (!theme) {
-      const currentTheme = localStorage.getItem(LOCALSTORAGE_KEY_Theme);
-      if (currentTheme === 'red' || currentTheme === 'blue') {
-        setTheme(currentTheme);
-      }
+    const currentTheme = localStorage.getItem(LOCALSTORAGE_KEY_Theme);
+    if (currentTheme === 'red' || currentTheme === 'blue') {
+      setTheme(currentTheme);
     }
   }, [theme]);
 
