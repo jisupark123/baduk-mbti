@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ab-btns.module.scss';
 import { motion, Variants } from 'framer-motion';
-import { Theme } from '../../store/theme-context';
+import { Theme } from '../../pages/_app';
 
 type AB = 'A' | 'B';
 
