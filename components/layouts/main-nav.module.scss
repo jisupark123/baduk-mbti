@@ -1,11 +1,12 @@
-.nav {
+.container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: $nav-height;
+  background-color: $bg--element1;
 }
-.innerNav {
+.nav {
   width: $desktop-nav-width;
   height: 100%;
   @include flex-between;
@@ -17,12 +18,8 @@
 .btns {
   display: flex;
   align-items: center;
-  button {
-    margin-right: 1rem;
+  a {
+    margin-right: 3rem;
     font-size: 2rem;
   }
-}
-.post-upload-btn {
-  // margin-right: 1rem;
-  // font-size: 2rem;
 }

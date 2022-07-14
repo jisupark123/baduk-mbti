@@ -1,0 +1,17 @@
+.container {
+  @include flex-center;
+  width: 300px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 3rem;
+  cursor: pointer;
+  margin: 50px;
+}
+
+.red {
+  border-color: $theme--red;
+}
+.blue {
+  border-color: $theme--blue;
+}

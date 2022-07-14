@@ -1,64 +1,37 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import useUser from '../../lib/client/useUser';
-import New from '../newPost/new';
+
 import styles from './main-nav.module.scss';
-import ModeChangeBtn from '../btn/mode-change-btn';
 
-interface MainNavProps {
-  onlyLogo?: boolean;
-}
+interface MainNavProps {}
 
-const MainNav: React.FC<MainNavProps> = ({ onlyLogo = false }) => {
-  const { user } = useUser();
+const MainNav: React.FC<MainNavProps> = ({}) => {
   const router = useRouter();
-
-  const [showNewPost, setShowNewPost] = useState(false);
 
   function onBtnClick(url: string) {
     router.push(url);
   }
-  function logoutHandler() {}
-  function clickNewPostHandler() {
-    setShowNewPost(true);
-  }
-  function closeNewPost() {
-    setShowNewPost(false);
-  }
 
   return (
-    <nav className={styles.nav}>
-      {showNewPost && <New closeNewPost={closeNewPost} />}
-      <div className={styles.innerNav}>
+    <div className={styles.container}>
+      <div className={styles.nav}>
         <div className={styles.logo}>
           <Link href='/'>
-            <a>큰거온다</a>
+            <a>나의 바둑 mbti</a>
           </Link>
         </div>
-        {!onlyLogo && (
-          <div className={styles.btns}>
-            <ModeChangeBtn />
-            {user && (
-              <button
-                className={styles['post-upload-btn']}
-                onClick={clickNewPostHandler}
-              >
-                New
-              </button>
-            )}
-            {!user && (
-              <button onClick={() => onBtnClick('/login')}>로그인</button>
-            )}
-            {user && (
-              <button onClick={() => onBtnClick('/api/users/logout')}>
-                로그아웃
-              </button>
-            )}
-          </div>
-        )}
+
+        <div className={styles.btns}>
+          <Link href='/question'>
+            <a>Test</a>
+          </Link>
+          <Link href='/all'>
+            <a>All</a>
+          </Link>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

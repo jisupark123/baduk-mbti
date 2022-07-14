@@ -5,7 +5,7 @@ import styles from './overlay.module.scss';
 interface BackDropProps {
   hasCloseBtn?: boolean;
   onlyCloseWithBtn?: boolean;
-  onCloseHandler: () => void;
+  onCloseHandler?: () => void;
 }
 
 interface OverlayProps extends BackDropProps {

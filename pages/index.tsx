@@ -10,7 +10,7 @@ import { LOCALSTORAGE_KEY_NAME, LOCALSTORAGE_KEY_Theme } from './_app';
 
 const Home: NextPage = () => {
   const [accepted, setAccepted] = useState(false); // 게임 초대 수락?
-  const [gameStarted, setGameStarted] = useState(true);
+  const [gameStarted, setGameStarted] = useState(false);
   const themeCtx = useContext(ThemeCtx);
   const router = useRouter();
   const nameRef = useRef<HTMLInputElement>(null);
@@ -36,18 +36,16 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <Link href={'#'}>
-        <a className={styles.choose}>
-          <div
-            className={styles.red}
-            onClick={() => handleChooseColor('red')}
-          ></div>
-          <div
-            className={styles.blue}
-            onClick={() => handleChooseColor('blue')}
-          ></div>
-        </a>
-      </Link>
+      <div className={styles.choose}>
+        <div
+          className={styles.red}
+          onClick={() => handleChooseColor('red')}
+        ></div>
+        <div
+          className={styles.blue}
+          onClick={() => handleChooseColor('blue')}
+        ></div>
+      </div>
 
       {!gameStarted && (
         <Overlay onlyCloseWithBtn={true} onCloseHandler={handleOverlayClose}>

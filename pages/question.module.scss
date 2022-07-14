@@ -1,0 +1,103 @@
+.container {
+  @include page-config;
+  background-color: $bg--main-page;
+  padding-bottom: 100px;
+}
+
+.wrapper {
+  margin-bottom: 100px;
+  padding: 100px 50px;
+  height: 500px;
+}
+
+.red-gradient {
+  background: linear-gradient(
+    355deg,
+    $bg--main-page 300px,
+    rgb(216, 91, 211) 0
+  );
+}
+.blue-gradient {
+  background: linear-gradient(
+    355deg,
+    $bg--main-page 300px,
+    rgb(65, 157, 253) 0
+  );
+}
+
+.header {
+  @include flex-center;
+  margin-bottom: 50px;
+  h1 {
+    font-size: 3.5rem;
+    color: white;
+  }
+}
+
+.tips {
+  @include flex-center;
+  .tip {
+    @include flex-center;
+    width: 25vw;
+    height: 14vw;
+    margin: 10px;
+    background-color: rgba($color: #ffffff, $alpha: 0.8);
+    border-radius: 10px;
+    font-size: 2.5rem;
+  }
+}
+
+.main {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.btns {
+  @include flex-center;
+}
+.submit {
+  @include flex-center;
+  button {
+    @include flex-center;
+    width: 20rem;
+    height: 7rem;
+    color: white;
+    font-size: 2rem;
+    border-radius: 50px;
+  }
+}
+
+.red-bg {
+  background-color: $theme--red;
+}
+.blue-bg {
+  background-color: $theme--blue;
+}
+
+.overlay-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.overlay-btns {
+  @include flex-center;
+  button {
+    @include flex-center;
+    width: 20rem;
+    padding: 20px 0;
+    margin: 30px 20px;
+    font-size: 2rem;
+    color: white;
+    border-radius: 50px;
+  }
+}
