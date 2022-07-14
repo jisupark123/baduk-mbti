@@ -1,10 +1,9 @@
 import { NextPage } from 'next';
 import React, { useContext, useEffect, useState } from 'react';
-import ThemeCtx, { Theme } from '../store/theme-context';
 import styles from './question.module.scss';
 import { motion, Variants } from 'framer-motion';
 import AB_Btns from '../components/btn/ab-btns';
-import { LOCALSTORAGE_KEY_Theme } from './_app';
+import { LOCALSTORAGE_KEY_Theme, Theme } from './_app';
 import Overlay from '../components/ui/overlay';
 import MbtiCard from '../components/ui/mbti-card';
 import { useRouter } from 'next/router';

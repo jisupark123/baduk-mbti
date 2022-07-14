@@ -1,17 +1,14 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import InvitationCard from '../components/ui/invitation-card';
 import Overlay from '../components/ui/overlay';
-import ThemeCtx, { Theme } from '../store/theme-context';
 import styles from './index.module.scss';
-import { LOCALSTORAGE_KEY_NAME, LOCALSTORAGE_KEY_Theme } from './_app';
+import { LOCALSTORAGE_KEY_NAME, LOCALSTORAGE_KEY_Theme, Theme } from './_app';
 
 const Home: NextPage = () => {
   const [accepted, setAccepted] = useState(false); // 게임 초대 수락?
   const [gameStarted, setGameStarted] = useState(false);
-  const themeCtx = useContext(ThemeCtx);
   const router = useRouter();
   const nameRef = useRef<HTMLInputElement>(null);
   function handleOverlayClose() {}
@@ -26,7 +23,6 @@ const Home: NextPage = () => {
   }
   function setColor(color: Theme) {
     localStorage.setItem(LOCALSTORAGE_KEY_Theme, color);
-    themeCtx?.setTheme(color);
   }
 
   function handleChooseColor(color: Theme) {
