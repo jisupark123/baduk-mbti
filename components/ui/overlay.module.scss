@@ -7,6 +7,10 @@
   z-index: $backdrop-z_index;
   background-color: rgba(0, 0, 0, 0.7);
 
+  .unvisible {
+    opacity: 0;
+  }
+
   .closeBtn {
     position: fixed;
     top: 12px;

@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { motion, Variants } from 'framer-motion';
 import styles from './overlay.module.scss';
 
 interface BackDropProps {
@@ -16,27 +17,53 @@ interface ModalProps {
   children: ReactNode;
 }
 
+const backdropVariants: Variants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: { duration: 0.2 },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.2 },
+  },
+};
+
 const BackDrop: React.FC<BackDropProps> = ({
   hasCloseBtn,
   onlyCloseWithBtn,
   onCloseHandler,
 }) => {
   return (
-    <div
+    <motion.div
       className={styles.backdrop}
       onClick={onlyCloseWithBtn ? () => {} : onCloseHandler}
+      variants={backdropVariants}
+      initial='initial'
+      animate='animate'
     >
       {hasCloseBtn && (
         <button className={styles.closeBtn} onClick={onCloseHandler}>
           ✕
         </button>
       )}
-    </div>
+    </motion.div>
   );
 };
 
 const Modal: React.FC<ModalProps> = ({ children }) => {
-  return <div className={styles.modal}>{children}</div>;
+  return (
+    <motion.div
+      className={styles.modal}
+      variants={backdropVariants}
+      initial='initial'
+      animate='animate'
+    >
+      {children}
+    </motion.div>
+  );
 };
 
 const Overlay: React.FC<OverlayProps> = (props) => {

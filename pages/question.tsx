@@ -3,24 +3,52 @@ import React, { useContext, useEffect, useState } from 'react';
 import styles from './question.module.scss';
 import { motion, Variants } from 'framer-motion';
 import AB_Btns from '../components/btn/ab-btns';
-import { LOCALSTORAGE_KEY_Theme, Theme } from './_app';
+import {
+  Level,
+  LOCALSTORAGE_KEY_LEVEL,
+  LOCALSTORAGE_KEY_THEME,
+  Theme,
+} from './_app';
 import Overlay from '../components/ui/overlay';
-import MbtiCard from '../components/ui/mbti-card';
 import { useRouter } from 'next/router';
 import Layout from '../components/layouts/layout';
+import MbtiDetail from '../components/ui/mbti-detail';
+import { MbtiTypes } from '../components/demo/mbti';
+import Image from 'next/image';
+import CenterFixed from '../components/ui/CenterFixed';
 
 interface QuestionProps {
   clickedTheme?: Theme;
 }
 
+const btnVariants: Variants = {
+  hover: {
+    y: -5,
+    transition: { ease: 'easeOut', duration: 0.4 },
+  },
+};
+
+const publicFolderRoot = '/../public/';
+const badukBoardWidth = 600;
+
 const Question: NextPage<QuestionProps> = () => {
   const [theme, setTheme] = useState<Theme>('red');
+  const [level, setLevel] = useState<Level>('초급');
   const [question1, setQuestion1] = useState<'E' | 'I' | null>(null);
   const [question2, setQuestion2] = useState<'N' | 'S' | null>(null);
   const [question3, setQuestion3] = useState<'F' | 'T' | null>(null);
   const [question4, setQuestion4] = useState<'J' | 'P' | null>(null);
+  const [selectedMbti, setSelectedMbti] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const router = useRouter();
+
+  function handleShowResult() {
+    if ([question1, question2, question3, question4].includes(null)) {
+      alert('모든 문항에 답변해주세요');
+      return;
+    }
+    setShowResult(true);
+  }
 
   function showAllResults() {
     router.push('/all');
@@ -29,36 +57,64 @@ const Question: NextPage<QuestionProps> = () => {
     router.reload();
   }
   useEffect(() => {
-    const currentTheme = localStorage.getItem(LOCALSTORAGE_KEY_Theme);
-    if (currentTheme === 'red' || currentTheme === 'blue') {
-      setTheme(currentTheme);
+    const selectedTheme = localStorage.getItem(LOCALSTORAGE_KEY_THEME);
+    if (selectedTheme === 'red' || selectedTheme === 'blue') {
+      setTheme(selectedTheme);
     }
-  }, [theme]);
+    const selectedLevel = localStorage.getItem(LOCALSTORAGE_KEY_LEVEL);
+    if (
+      selectedLevel === '초급' ||
+      selectedLevel === '중급' ||
+      selectedLevel === '고급'
+    ) {
+      setLevel(selectedLevel);
+    }
+  }, [theme, level]);
+
+  useEffect(() => {
+    if (
+      question1 != null &&
+      question2 != null &&
+      question3 != null &&
+      question4 != null
+    ) {
+      setSelectedMbti(question1 + question2 + question3 + question4);
+    }
+  }, [question1, question2, question3, question4]);
 
   return (
     <Layout>
       <div className={styles.container}>
         {showResult && (
-          <Overlay>
+          <Overlay
+            hasCloseBtn={true}
+            onCloseHandler={() => setShowResult(false)}
+          >
             <div className={styles['overlay-container']}>
-              <MbtiCard />
+              <div className={styles['mbti-card']}>
+                <MbtiDetail type={selectedMbti} />
+              </div>
               <div className={styles['overlay-btns']}>
-                <button
+                <motion.button
+                  whileHover={'hover'}
+                  variants={btnVariants}
                   onClick={showAllResults}
                   className={
                     theme === 'red' ? styles['red-bg'] : styles['blue-bg']
                   }
                 >
                   다른 성향도 알아보기
-                </button>
-                <button
+                </motion.button>
+                <motion.button
+                  whileHover={'hover'}
+                  variants={btnVariants}
                   onClick={onMoreTime}
                   className={
                     theme === 'red' ? styles['red-bg'] : styles['blue-bg']
                   }
                 >
                   한번 더!
-                </button>
+                </motion.button>
               </div>
             </div>
           </Overlay>
@@ -79,8 +135,20 @@ const Question: NextPage<QuestionProps> = () => {
         </div>
         <div className={styles.main}>
           <div className={styles.question}>
-            <div className={styles['baduk-board']}></div>
-            <div className={styles.btns}>
+            <div className={styles.title}>Q1</div>
+            <div className={styles['baduk-board']}>
+              <Image
+                src={publicFolderRoot + level + '_1.png'}
+                alt='바둑판'
+                width={badukBoardWidth}
+                height={badukBoardWidth}
+              />
+            </div>
+            <div
+              className={`${styles.btns} ${
+                theme === 'red' ? styles['red-border'] : styles['blue-border']
+              }`}
+            >
               <AB_Btns
                 theme={theme}
                 mbti={{ A: 'E', B: 'I' }}
@@ -89,8 +157,20 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div className={styles['baduk-board']}></div>
-            <div className={styles.btns}>
+            <div className={styles.title}>Q2</div>
+            <div className={styles['baduk-board']}>
+              <Image
+                src={publicFolderRoot + level + '_2.png'}
+                alt='바둑판'
+                width={badukBoardWidth}
+                height={badukBoardWidth}
+              />
+            </div>
+            <div
+              className={`${styles.btns} ${
+                theme === 'red' ? styles['red-border'] : styles['blue-border']
+              }`}
+            >
               <AB_Btns
                 theme={theme}
                 mbti={{ A: 'N', B: 'S' }}
@@ -99,8 +179,20 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div className={styles['baduk-board']}></div>
-            <div className={styles.btns}>
+            <div className={styles.title}>Q3</div>
+            <div className={styles['baduk-board']}>
+              <Image
+                src={publicFolderRoot + level + '_3.png'}
+                alt='바둑판'
+                width={badukBoardWidth}
+                height={badukBoardWidth}
+              />
+            </div>
+            <div
+              className={`${styles.btns} ${
+                theme === 'red' ? styles['red-border'] : styles['blue-border']
+              }`}
+            >
               <AB_Btns
                 theme={theme}
                 mbti={{ A: 'F', B: 'T' }}
@@ -109,11 +201,23 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div className={styles['baduk-board']}></div>
-            <div className={styles.btns}>
+            <div className={styles.title}>Q4</div>
+            <div className={styles['baduk-board']}>
+              <Image
+                src={publicFolderRoot + level + '_4.png'}
+                alt='바둑판'
+                width={badukBoardWidth}
+                height={badukBoardWidth}
+              />
+            </div>
+            <div
+              className={`${styles.btns} ${
+                theme === 'red' ? styles['red-border'] : styles['blue-border']
+              }`}
+            >
               <AB_Btns
                 theme={theme}
-                mbti={{ A: 'J', B: 'P' }}
+                mbti={{ A: 'P', B: 'J' }}
                 mbtiSetter={setQuestion4}
               />
             </div>
@@ -121,7 +225,7 @@ const Question: NextPage<QuestionProps> = () => {
           <div className={styles.submit}>
             <button
               className={theme === 'red' ? styles['red-bg'] : styles['blue-bg']}
-              onClick={() => setShowResult(true)}
+              onClick={handleShowResult}
             >
               결과 확인하기
             </button>
