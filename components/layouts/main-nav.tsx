@@ -18,16 +18,16 @@ const MainNav: React.FC<MainNavProps> = ({}) => {
       <div className={styles.nav}>
         <div className={styles.logo}>
           <Link href='/'>
-            <a>나의 바둑 MBTI</a>
+            <a>채움 MBTI</a>
           </Link>
         </div>
 
         <div className={styles.btns}>
           <Link href='/question'>
-            <a>Test</a>
+            <a>문제</a>
           </Link>
           <Link href='/all'>
-            <a>All</a>
+            <a>모든 유형</a>
           </Link>
         </div>
       </div>

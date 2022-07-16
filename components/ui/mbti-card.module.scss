@@ -1,7 +1,38 @@
 .container {
-  width: 30rem;
-  height: 35rem;
+  @include flex-center;
+  width: 25rem;
+  height: 8rem;
   box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
   background-color: $bg--element1;
   margin: 1rem;
+  padding: 10px 0;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.type {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.red-color {
+  color: $theme--red;
+}
+.blue-color {
+  color: $theme--blue;
+}
+.red-bg {
+  background-color: $theme--red;
+}
+.blue-bg {
+  background-color: $theme--blue;
+}
+
+.red-border {
+  border-color: $theme--red;
+}
+.blue-border {
+  border-color: $theme--blue;
 }

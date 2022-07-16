@@ -1,18 +1,34 @@
 import React from 'react';
-import { MbtiTypes } from '../demo/mbti';
+import { motion, Variants } from 'framer-motion';
+import { IMBTI, MbtiTypes } from '../demo/mbti';
 import styles from './mbti-card.module.scss';
+import { Theme } from '../../pages/_app';
 
 interface MbtiCardProps {
-  type: MbtiTypes;
+  theme: Theme;
+  mbti: IMBTI;
   handleClick: (mbtiType: MbtiTypes) => void;
 }
 
-const MbtiCard: React.FC<MbtiCardProps> = ({ type, handleClick }) => {
+const btnVariants: Variants = {
+  hover: {
+    y: -7,
+    transition: { ease: 'easeOut', duration: 0.4 },
+  },
+};
+
+const MbtiCard: React.FC<MbtiCardProps> = ({ theme, mbti, handleClick }) => {
   return (
-    <div className={styles.container} onClick={() => handleClick(type)}>
-      <div className={styles.contents}></div>
-      <div className={styles.btns}></div>
-    </div>
+    <motion.div
+      whileHover={'hover'}
+      variants={btnVariants}
+      className={`${styles.container} ${
+        theme === 'red' ? styles['red-border'] : styles['blue-border']
+      }`}
+      onClick={() => handleClick(mbti.id)}
+    >
+      <div className={styles.type}>{`${mbti.id} - ${mbti.detailType}`}</div>
+    </motion.div>
   );
 };
 

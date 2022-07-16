@@ -1,4 +1,4 @@
-interface IMBTI {
+export interface IMBTI {
   id: MbtiTypes;
   type: string;
   detailType: string;
@@ -7,7 +7,7 @@ interface IMBTI {
   description: string;
 }
 
-const MBTIS: IMBTI[] = [
+export const MBTIS: IMBTI[] = [
   //////////////////////////////// 분석가형 ////////////////////////////////////////////
 
   {
@@ -177,4 +177,7 @@ export type MbtiTypes =
   | 'ESFP'
   | 'ESFJ';
 
-export default MBTIS;
+export const analystTypeMbti = MBTIS.slice(0, 4); //분석가형
+export const diplomaticTypeMbti = MBTIS.slice(4, 8); //외교관형
+export const administrativeTypeMbti = MBTIS.slice(8, 12); //관리자형
+export const explorerTypeMbti = MBTIS.slice(12, 16); //탐험가형

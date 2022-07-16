@@ -102,7 +102,7 @@ const Question: NextPage<QuestionProps> = () => {
                 </span>
               </div>
               <div className={styles['mbti-card']}>
-                <MbtiDetail type={selectedMbti} />
+                <MbtiDetail type={selectedMbti} theme={theme} />
               </div>
               <div className={styles['overlay-btns']}>
                 <motion.button
