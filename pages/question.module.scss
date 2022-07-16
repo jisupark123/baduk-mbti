@@ -78,8 +78,9 @@
   @include flex-center;
   button {
     @include flex-center;
-    width: 20rem;
-    height: 7rem;
+    // width: 20rem;
+    // height: 7rem;
+    padding: 20px 30px;
     color: white;
     font-size: 2rem;
     border-radius: 50px;
@@ -101,7 +102,7 @@
     margin: 0 auto 30px auto;
     padding: 20px 0;
     width: 60%;
-    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    background-color: rgba($color: #ffffff, $alpha: 0.7);
     border-radius: 50px;
     span {
       margin: 3px;
@@ -116,8 +117,8 @@
     @include flex-center;
     button {
       @include flex-center;
-      width: 20rem;
-      padding: 20px 0;
+      // width: 20rem;
+      padding: 20px 30px;
       margin: 0px 30px;
       font-size: 2rem;
       color: white;

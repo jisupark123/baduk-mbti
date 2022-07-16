@@ -72,6 +72,10 @@ const Question: NextPage<QuestionProps> = () => {
   }, [theme, level]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     if (
       question1 != null &&
       question2 != null &&

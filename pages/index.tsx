@@ -17,7 +17,7 @@ const LevelArray: Level[] = ['초급', '중급', '고급'];
 
 const btnVariants: Variants = {
   hover: {
-    y: -5,
+    y: -4,
     transition: { ease: 'easeOut', duration: 0.4 },
   },
 };

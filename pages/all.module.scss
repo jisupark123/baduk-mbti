@@ -12,6 +12,7 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 50px 0;
+  margin-bottom: 100px;
   .row {
     margin-bottom: 100px;
     padding-bottom: 100px;
@@ -35,6 +36,14 @@
   height: 100vh;
   z-index: 100;
   background-color: rgba($color: #000000, $alpha: 0.3);
+}
+
+.footer {
+  padding-bottom: 50px;
+  p {
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+  }
 }
 
 .red-color {
