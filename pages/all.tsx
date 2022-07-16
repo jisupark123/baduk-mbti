@@ -76,12 +76,12 @@ const All = () => {
           <footer className={styles.footer}>
             <p>
               {
-                '<본 결과지에 나온 프로기사 MBTI는 채움 MBTI 연구팀이 기풍에 맞게 작성한 내용으로 실제와는 다를 수 있습니다.>'
+                '※ 본 결과지에 나온 프로기사 MBTI는 채움 MBTI 연구팀이 기풍에 맞게 작성한 내용으로 실제와는 다를 수 있습니다.'
               }
             </p>
             <p>
               {
-                '<본 결과지는 MBTI 공식사이트 16Personalities를 참고하여 작성되었습니다.>'
+                '※ 본 결과지는 MBTI 공식사이트 16Personalities를 참고하여 작성되었습니다.'
               }
             </p>
           </footer>
