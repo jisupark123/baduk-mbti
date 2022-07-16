@@ -115,7 +115,7 @@ export const MBTIS: IMBTI[] = [
     id: 'ESFJ',
     type: '관리자형',
     detailType: '집정관',
-    pro: '박하민',
+    pro: '송지훈',
     tags: ['배려심', '사교성_업', '마당발'],
     description:
       '집중력이 뛰어나고 바둑이 안정적입니다. 하지만 새로운 모양에 대한 두려움이 있습니다. 틀에 갇히지 않게 주의해야 합니다.',
