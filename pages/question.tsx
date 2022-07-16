@@ -26,7 +26,8 @@ const btnVariants: Variants = {
   },
 };
 
-const publicFolderRoot = '/../public/';
+const publicFolderRoot = '/';
+// const publicFolderRoot = '/../public/';
 const badukBoardWidth = 600;
 
 const Question: NextPage<QuestionProps> = () => {
@@ -141,11 +142,13 @@ const Question: NextPage<QuestionProps> = () => {
               Q1
             </div>
             <div className={styles['baduk-board']}>
-              <Image
+              <img
                 src={publicFolderRoot + level + '_1.png'}
                 alt='바둑판'
-                width={badukBoardWidth}
-                height={badukBoardWidth}
+                style={{
+                  width: `${badukBoardWidth}px`,
+                  height: `${badukBoardWidth}px`,
+                }}
               />
             </div>
             <div
