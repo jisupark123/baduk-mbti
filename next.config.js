@@ -12,7 +12,8 @@ const nextConfig = {
       // process.env.NODE_ENV === 'production'
       //   ? process.env.PUBLIC_URL
       //   : process.env.HOME,
-      process.env.PUBLIC_URL,
+      // process.env.PUBLIC_URL,
+      'https://baduk-mbti.vercel.app',
   },
   // env: {
   //   BASE_URL: process.env.BASE_URL,
