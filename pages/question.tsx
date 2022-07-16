@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './question.module.scss';
 import { motion, Variants } from 'framer-motion';
 import AB_Btns from '../components/btn/ab-btns';
@@ -13,9 +13,7 @@ import Overlay from '../components/ui/overlay';
 import { useRouter } from 'next/router';
 import Layout from '../components/layouts/layout';
 import MbtiDetail from '../components/ui/mbti-detail';
-import { MbtiTypes } from '../components/demo/mbti';
 import Image from 'next/image';
-import CenterFixed from '../components/ui/CenterFixed';
 
 interface QuestionProps {
   clickedTheme?: Theme;
@@ -135,7 +133,13 @@ const Question: NextPage<QuestionProps> = () => {
         </div>
         <div className={styles.main}>
           <div className={styles.question}>
-            <div className={styles.title}>Q1</div>
+            <div
+              className={`${styles.title} ${
+                theme === 'red' ? styles['red-color'] : styles['blue-color']
+              }`}
+            >
+              Q1
+            </div>
             <div className={styles['baduk-board']}>
               <Image
                 src={publicFolderRoot + level + '_1.png'}
@@ -157,7 +161,13 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div className={styles.title}>Q2</div>
+            <div
+              className={`${styles.title} ${
+                theme === 'red' ? styles['red-color'] : styles['blue-color']
+              }`}
+            >
+              Q2
+            </div>
             <div className={styles['baduk-board']}>
               <Image
                 src={publicFolderRoot + level + '_2.png'}
@@ -179,7 +189,13 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div className={styles.title}>Q3</div>
+            <div
+              className={`${styles.title} ${
+                theme === 'red' ? styles['red-color'] : styles['blue-color']
+              }`}
+            >
+              Q3
+            </div>
             <div className={styles['baduk-board']}>
               <Image
                 src={publicFolderRoot + level + '_3.png'}
@@ -201,7 +217,13 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div className={styles.title}>Q4</div>
+            <div
+              className={`${styles.title} ${
+                theme === 'red' ? styles['red-color'] : styles['blue-color']
+              }`}
+            >
+              Q4
+            </div>
             <div className={styles['baduk-board']}>
               <Image
                 src={publicFolderRoot + level + '_4.png'}
