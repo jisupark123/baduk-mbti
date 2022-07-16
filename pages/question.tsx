@@ -6,6 +6,7 @@ import AB_Btns from '../components/btn/ab-btns';
 import {
   Level,
   LOCALSTORAGE_KEY_LEVEL,
+  LOCALSTORAGE_KEY_NAME,
   LOCALSTORAGE_KEY_THEME,
   Theme,
 } from './_app';
@@ -90,6 +91,16 @@ const Question: NextPage<QuestionProps> = () => {
             onCloseHandler={() => setShowResult(false)}
           >
             <div className={styles['overlay-container']}>
+              <div className={styles['ment']}>
+                <span>{localStorage.getItem(LOCALSTORAGE_KEY_NAME)}</span>
+                <span
+                  className={
+                    theme === 'red' ? styles['red-color'] : styles['blue-color']
+                  }
+                >
+                  님의 MBTI는?
+                </span>
+              </div>
               <div className={styles['mbti-card']}>
                 <MbtiDetail type={selectedMbti} />
               </div>
@@ -155,6 +166,7 @@ const Question: NextPage<QuestionProps> = () => {
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
+                loading='eager'
               />
             </div>
             <div
@@ -183,6 +195,7 @@ const Question: NextPage<QuestionProps> = () => {
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
+                loading='eager'
               />
             </div>
             <div
@@ -211,6 +224,7 @@ const Question: NextPage<QuestionProps> = () => {
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
+                loading='eager'
               />
             </div>
             <div
@@ -239,6 +253,7 @@ const Question: NextPage<QuestionProps> = () => {
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
+                loading='eager'
               />
             </div>
             <div

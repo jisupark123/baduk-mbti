@@ -18,7 +18,7 @@ const MainNav: React.FC<MainNavProps> = ({}) => {
       <div className={styles.nav}>
         <div className={styles.logo}>
           <Link href='/'>
-            <a>나의 바둑 mbti</a>
+            <a>나의 바둑 MBTI</a>
           </Link>
         </div>
 
