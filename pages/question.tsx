@@ -142,13 +142,19 @@ const Question: NextPage<QuestionProps> = () => {
               Q1
             </div>
             <div className={styles['baduk-board']}>
-              <img
+              {/* <img
                 src={publicFolderRoot + level + '_1.png'}
                 alt='바둑판'
                 style={{
                   width: `${badukBoardWidth}px`,
                   height: `${badukBoardWidth}px`,
                 }}
+              /> */}
+              <Image
+                src={publicFolderRoot + level + '_1.png'}
+                alt='바둑판'
+                width={badukBoardWidth}
+                height={badukBoardWidth}
               />
             </div>
             <div
