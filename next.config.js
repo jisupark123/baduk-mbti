@@ -8,6 +8,7 @@ const nextConfig = {
     prependData: `@import "styles/_variables.scss"; @import "styles/_mixins.scss";`,
   },
   images: {
+    loader: 'imgix',
     path:
       // process.env.NODE_ENV === 'production'
       //   ? process.env.PUBLIC_URL
