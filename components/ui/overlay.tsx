@@ -49,8 +49,8 @@ const BackDrop: React.FC<BackDropProps> = ({
       animate='animate'
     >
       {hasLeftBtn && (
-        <button className={styles.closeBtn} onClick={handleClickLeftBtn}>
-          ✕
+        <button className={styles.homeBtn} onClick={handleClickLeftBtn}>
+          ↩︎
         </button>
       )}
 
@@ -89,6 +89,8 @@ const Overlay: React.FC<OverlayProps> = (props) => {
             onCloseHandler={props.onCloseHandler}
             hasCloseBtn={props.hasCloseBtn}
             onlyCloseWithBtn={props.onlyCloseWithBtn}
+            hasLeftBtn={props.hasLeftBtn}
+            handleClickLeftBtn={props.handleClickLeftBtn}
           />,
           portalElement
         )}

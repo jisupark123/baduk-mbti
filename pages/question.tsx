@@ -56,6 +56,9 @@ const Question: NextPage<QuestionProps> = () => {
   function onMoreTime() {
     router.reload();
   }
+  function goHome() {
+    router.push('/');
+  }
   useEffect(() => {
     const selectedTheme = localStorage.getItem(LOCALSTORAGE_KEY_THEME);
     if (selectedTheme === 'red' || selectedTheme === 'blue') {
@@ -91,8 +94,10 @@ const Question: NextPage<QuestionProps> = () => {
       <div className={styles.container}>
         {showResult && (
           <Overlay
+            hasLeftBtn={true}
             hasCloseBtn={true}
             onCloseHandler={() => setShowResult(false)}
+            handleClickLeftBtn={goHome}
           >
             <div className={styles['overlay-container']}>
               <div className={styles['ment']}>
