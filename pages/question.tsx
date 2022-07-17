@@ -29,7 +29,7 @@ const btnVariants: Variants = {
 
 const publicFolderRoot = '/';
 // const publicFolderRoot = '/../public/';
-const badukBoardWidth = 600;
+const badukBoardWidth = 500;
 
 const Question: NextPage<QuestionProps> = () => {
   const [theme, setTheme] = useState<Theme>('red');

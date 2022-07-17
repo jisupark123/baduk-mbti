@@ -4,6 +4,8 @@ import { motion, Variants } from 'framer-motion';
 import styles from './overlay.module.scss';
 
 interface BackDropProps {
+  hasLeftBtn?: boolean;
+  handleClickLeftBtn?: () => void;
   hasCloseBtn?: boolean;
   onlyCloseWithBtn?: boolean;
   onCloseHandler?: () => void;
@@ -32,9 +34,11 @@ const backdropVariants: Variants = {
 };
 
 const BackDrop: React.FC<BackDropProps> = ({
+  hasLeftBtn,
   hasCloseBtn,
   onlyCloseWithBtn,
   onCloseHandler,
+  handleClickLeftBtn,
 }) => {
   return (
     <motion.div
@@ -44,6 +48,12 @@ const BackDrop: React.FC<BackDropProps> = ({
       initial='initial'
       animate='animate'
     >
+      {hasLeftBtn && (
+        <button className={styles.closeBtn} onClick={handleClickLeftBtn}>
+          ✕
+        </button>
+      )}
+
       {hasCloseBtn && (
         <button className={styles.closeBtn} onClick={onCloseHandler}>
           ✕
