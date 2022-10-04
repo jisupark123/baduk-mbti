@@ -23,8 +23,7 @@ const btnVariants: Variants = {
 };
 
 const Home: NextPage = () => {
-  const [accepted, setAccepted] = useState(false); // 게임 초대 수락?
-  const [gameStarted, setGameStarted] = useState(false);
+  // const [accepted, setAccepted] = useState(false); // 게임 초대 수락?
   const [name, setName] = useState('');
   const [level, setLevel] = useState<Level | undefined>(undefined);
   const router = useRouter();
@@ -40,7 +39,7 @@ const Home: NextPage = () => {
     }
     localStorage.setItem(LOCALSTORAGE_KEY_NAME, name);
     localStorage.setItem(LOCALSTORAGE_KEY_LEVEL, level);
-    setGameStarted(true);
+    router.push('/test');
   }
   function handleNameChange(event: FormEvent<HTMLInputElement>) {
     setName(event.currentTarget.value);
@@ -52,30 +51,20 @@ const Home: NextPage = () => {
 
   function handleChooseColor(color: Theme) {
     setColor(color);
-    router.push('/question');
+    router.push('/test');
   }
 
   return (
     <div className={styles.container}>
-      <div className={styles.choose}>
-        <div
-          className={styles.red}
-          onClick={() => handleChooseColor('red')}
-        ></div>
-        <div
-          className={styles.blue}
-          onClick={() => handleChooseColor('blue')}
-        ></div>
-      </div>
-
-      {!gameStarted && (
+      {
         <Overlay onlyCloseWithBtn={true} onCloseHandler={handleOverlayClose}>
-          {!accepted ? (
-            <InvitationCard
-              ment='게임에 참여하시겠습니까?'
-              onClickHandler={() => setAccepted(true)}
-            />
-          ) : (
+          {
+            // !accepted ? (
+            //   <InvitationCard
+            //     ment='게임에 참여하시겠습니까?'
+            //     onClickHandler={() => setAccepted(true)}
+            //   />
+            // ) :
             <div className={styles['get-name-container']}>
               <div className={styles.wrapper}>
                 <label className={styles.ment} htmlFor='name'>
@@ -108,9 +97,9 @@ const Home: NextPage = () => {
                 <button onClick={gameStart}>시작</button>
               </div>
             </div>
-          )}
+          }
         </Overlay>
-      )}
+      }
     </div>
   );
 };

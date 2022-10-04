@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import React, { useEffect, useState } from 'react';
-import styles from './question.module.scss';
+import styles from './test.module.scss';
 import { motion, Variants } from 'framer-motion';
 import AB_Btns from '../components/btn/ab-btns';
 import {
@@ -31,7 +31,7 @@ const publicFolderRoot = '/';
 // const publicFolderRoot = '/../public/';
 const badukBoardWidth = 500;
 
-const Question: NextPage<QuestionProps> = () => {
+const Test: NextPage<QuestionProps> = () => {
   const [theme, setTheme] = useState<Theme>('red');
   const [level, setLevel] = useState<Level>('초급');
   const [question1, setQuestion1] = useState<'E' | 'I' | null>(null);
@@ -53,17 +53,15 @@ const Question: NextPage<QuestionProps> = () => {
   function showAllResults() {
     router.push('/all');
   }
-  function onMoreTime() {
+  function oneMoreTime() {
     router.reload();
   }
   function goHome() {
     router.push('/');
   }
   useEffect(() => {
-    const selectedTheme = localStorage.getItem(LOCALSTORAGE_KEY_THEME);
-    if (selectedTheme === 'red' || selectedTheme === 'blue') {
-      setTheme(selectedTheme);
-    }
+    // const selectedTheme = localStorage.getItem(LOCALSTORAGE_KEY_THEME);
+
     const selectedLevel = localStorage.getItem(LOCALSTORAGE_KEY_LEVEL);
     if (
       selectedLevel === '초급' ||
@@ -102,13 +100,7 @@ const Question: NextPage<QuestionProps> = () => {
             <div className={styles['overlay-container']}>
               <div className={styles['ment']}>
                 <span>{localStorage.getItem(LOCALSTORAGE_KEY_NAME)}</span>
-                <span
-                  className={
-                    theme === 'red' ? styles['red-color'] : styles['blue-color']
-                  }
-                >
-                  님의 MBTI는?
-                </span>
+                <span className={styles['red-color']}>님의 MBTI는?</span>
               </div>
               <div className={styles['mbti-card']}>
                 <MbtiDetail type={selectedMbti} theme={theme} />
@@ -118,19 +110,15 @@ const Question: NextPage<QuestionProps> = () => {
                   whileHover={'hover'}
                   variants={btnVariants}
                   onClick={showAllResults}
-                  className={
-                    theme === 'red' ? styles['red-bg'] : styles['blue-bg']
-                  }
+                  className={styles['red-bg']}
                 >
                   다른 성향도 알아보기
                 </motion.button>
                 <motion.button
                   whileHover={'hover'}
                   variants={btnVariants}
-                  onClick={onMoreTime}
-                  className={
-                    theme === 'red' ? styles['red-bg'] : styles['blue-bg']
-                  }
+                  onClick={oneMoreTime}
+                  className={styles['red-bg']}
                 >
                   한번 더!
                 </motion.button>
@@ -138,11 +126,7 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </Overlay>
         )}
-        <div
-          className={`${styles.wrapper} ${
-            theme === 'red' ? styles['red-gradient'] : styles['blue-gradient']
-          }`}
-        >
+        <div className={`${styles.wrapper} ${styles['red-gradient']}`}>
           <div className={styles.header}>
             <h1>바둑으로 알아보는 MBTI</h1>
           </div>
@@ -154,16 +138,10 @@ const Question: NextPage<QuestionProps> = () => {
         </div>
         <div className={styles.main}>
           <div className={styles.question}>
-            <div
-              className={`${styles.title} ${
-                theme === 'red' ? styles['red-color'] : styles['blue-color']
-              }`}
-            >
-              Q1
-            </div>
+            <div className={`${styles.title} ${styles['red-color']}`}>Q1</div>
             <div className={styles['baduk-board']}>
               {/* <img
-                src={publicFolderRoot + level + '_1.png'}
+                src={publicFolderRoot + level + "/" + '_1.png'}
                 alt='바둑판'
                 style={{
                   width: `${badukBoardWidth}px`,
@@ -171,18 +149,14 @@ const Question: NextPage<QuestionProps> = () => {
                 }}
               /> */}
               <Image
-                src={publicFolderRoot + level + '_1.png'}
+                src={`/${level}/${level}_1_1.png`}
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
                 loading='eager'
               />
             </div>
-            <div
-              className={`${styles.btns} ${
-                theme === 'red' ? styles['red-border'] : styles['blue-border']
-              }`}
-            >
+            <div className={`${styles.btns} ${styles['red-border']}`}>
               <AB_Btns
                 theme={theme}
                 mbti={{ A: 'E', B: 'I' }}
@@ -191,27 +165,17 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div
-              className={`${styles.title} ${
-                theme === 'red' ? styles['red-color'] : styles['blue-color']
-              }`}
-            >
-              Q2
-            </div>
+            <div className={`${styles.title} ${styles['red-color']}`}>Q2</div>
             <div className={styles['baduk-board']}>
               <Image
-                src={publicFolderRoot + level + '_2.png'}
+                src={`/${level}/${level}_2_1.png`}
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
                 loading='eager'
               />
             </div>
-            <div
-              className={`${styles.btns} ${
-                theme === 'red' ? styles['red-border'] : styles['blue-border']
-              }`}
-            >
+            <div className={`${styles.btns} ${styles['red-border']}`}>
               <AB_Btns
                 theme={theme}
                 mbti={{ A: 'N', B: 'S' }}
@@ -220,27 +184,17 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div
-              className={`${styles.title} ${
-                theme === 'red' ? styles['red-color'] : styles['blue-color']
-              }`}
-            >
-              Q3
-            </div>
+            <div className={`${styles.title} ${styles['red-color']}`}>Q3</div>
             <div className={styles['baduk-board']}>
               <Image
-                src={publicFolderRoot + level + '_3.png'}
+                src={`/${level}/${level}_3_1.png`}
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
                 loading='eager'
               />
             </div>
-            <div
-              className={`${styles.btns} ${
-                theme === 'red' ? styles['red-border'] : styles['blue-border']
-              }`}
-            >
+            <div className={`${styles.btns} ${styles['red-border']}`}>
               <AB_Btns
                 theme={theme}
                 mbti={{ A: 'F', B: 'T' }}
@@ -249,27 +203,17 @@ const Question: NextPage<QuestionProps> = () => {
             </div>
           </div>
           <div className={styles.question}>
-            <div
-              className={`${styles.title} ${
-                theme === 'red' ? styles['red-color'] : styles['blue-color']
-              }`}
-            >
-              Q4
-            </div>
+            <div className={`${styles.title} ${styles['red-color']}`}>Q4</div>
             <div className={styles['baduk-board']}>
               <Image
-                src={publicFolderRoot + level + '_4.png'}
+                src={`/${level}/${level}_4_1.png`}
                 alt='바둑판'
                 width={badukBoardWidth}
                 height={badukBoardWidth}
                 loading='eager'
               />
             </div>
-            <div
-              className={`${styles.btns} ${
-                theme === 'red' ? styles['red-border'] : styles['blue-border']
-              }`}
-            >
+            <div className={`${styles.btns} ${styles['red-border']}`}>
               <AB_Btns
                 theme={theme}
                 mbti={{ A: 'P', B: 'J' }}
@@ -291,4 +235,4 @@ const Question: NextPage<QuestionProps> = () => {
   );
 };
 
-export default Question;
+export default Test;

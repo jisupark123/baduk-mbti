@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   height: 100vh;
+  background-color: rgb(0, 0, 0);
 }
 
 .choose {
@@ -56,13 +57,13 @@
       font-size: 2rem;
       background-color: black;
       // background-color: aliceblue;
-      color: $light-green;
+      color: $whiteSmoke;
       &:focus {
-        border: 2px solid $light-green;
+        border: 2px solid $theme--red;
       }
     }
     .got-name {
-      border: 2px solid $light-green;
+      border: 2px solid $theme--red;
     }
     .btns {
       @include flex-center;
@@ -79,8 +80,10 @@
         cursor: pointer;
       }
       .clicked {
-        border: 2px solid $light-green;
-        color: $light-green;
+        // border: 2px solid $light-green;
+        border: 2px solid $theme--red;
+        // color: $light-green;
+        color: $theme--red;
       }
     }
   }
@@ -93,5 +96,8 @@
     color: white;
     font-size: 1.7rem;
     cursor: pointer;
+    &:hover {
+      color: $theme--red;
+    }
   }
 }

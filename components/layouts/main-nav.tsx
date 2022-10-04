@@ -23,7 +23,7 @@ const MainNav: React.FC<MainNavProps> = ({}) => {
         </div>
 
         <div className={styles.btns}>
-          <Link href='/question'>
+          <Link href='/test'>
             <a>문제</a>
           </Link>
           <Link href='/all'>
