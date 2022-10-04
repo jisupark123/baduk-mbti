@@ -1,12 +1,23 @@
 .container {
-  @include flex-center;
-  width: 20rem;
-  height: 7rem;
-  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 47%;
+  padding: 20px;
   border-radius: 5px;
-  font-size: 3rem;
+  font-weight: bold;
+  font-size: 2rem;
+  border: 2px solid rgba($color: #000000, $alpha: 0.01);
+  background-color: rgba($color: #000000, $alpha: 0.05);
   cursor: pointer;
-  margin: 50px;
+  span:first-child {
+    color: $theme--red;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  span:last-child {
+    color: black;
+  }
 }
 
 .red {
@@ -17,3 +28,9 @@
   border-color: $theme--blue;
   color: $theme--blue;
 }
+.clicked {
+  border-color: $theme--red;
+}
+// .A-color {
+//   color: rgb(168, 92, 168);
+// }

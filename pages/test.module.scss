@@ -2,12 +2,11 @@
   @include page-config;
   background-color: $bg--main-page;
   padding-bottom: 100px;
-}
-
-.wrapper {
-  margin-bottom: 100px;
-  padding: 100px 50px;
-  height: 500px;
+  .wrapper {
+    margin-bottom: 100px;
+    padding: 100px 20px;
+    height: 500px;
+  }
 }
 
 .red-gradient {
@@ -42,10 +41,10 @@
 
 .main {
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
 }
 
-.question {
+.section {
   display: flex;
   flex-direction: column;
   margin-bottom: 150px;
@@ -57,22 +56,32 @@
     font-size: 5rem;
     font-weight: 600;
   }
-  .baduk-board {
-    @include flex-center;
-    margin-bottom: 50px;
-    position: relative;
-  }
-  .btns {
-    @include flex-center;
-    margin: 0 auto;
-    width: 70%;
-    border-width: 3px;
-    border-style: solid;
-    border-radius: 10px;
-    background-color: whitesmoke;
+  .question {
+    display: flex;
+    justify-content: center;
+    height: 600px;
+    // background-color: black;
+    .baduk-board {
+      @include flex-center;
+      position: relative;
+      width: 600px;
+      height: 100%;
+      margin-right: 20px;
+    }
+    .btns {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+      height: 100%;
+      padding: 10px 0;
+      border-radius: 10px;
+      // background-color: rgba(245, 237, 245, 0.822);
+    }
   }
 }
-.question:nth-child(4) {
+.section:nth-child(4) {
   border: none;
   padding: 0px;
 }

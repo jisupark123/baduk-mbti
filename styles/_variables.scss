@@ -5,9 +5,10 @@ $nav-height: 6.5rem;
 $main-height: calc(100vh - $nav-height);
 $modal-header-height: 50px;
 
-// overlay
+// z_index
 $backdrop-z_index: 30;
 $modal-z_index: calc($backdrop-z_index + 1);
+$nav-z_index: 100;
 
 // colors
 

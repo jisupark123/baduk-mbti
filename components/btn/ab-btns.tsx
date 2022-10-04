@@ -8,6 +8,7 @@ type AB = 'A' | 'B';
 interface AB_BtnProps {
   theme: Theme | undefined;
   mbti: { A: string; B: string };
+  description: { title: string; A: string; B: string };
   mbtiSetter: (mbti: any) => void;
 }
 
@@ -17,7 +18,12 @@ const btnVariants: Variants = {
     transition: { ease: 'easeOut', duration: 0.4 },
   },
 };
-const AB_Btns: React.FC<AB_BtnProps> = ({ theme, mbti, mbtiSetter }) => {
+const AB_Btns: React.FC<AB_BtnProps> = ({
+  theme,
+  mbti,
+  description,
+  mbtiSetter,
+}) => {
   const [clickedBtn, setClickedBtn] = useState<AB | null>(null);
   const themeColor = theme ?? '';
 
@@ -34,23 +40,23 @@ const AB_Btns: React.FC<AB_BtnProps> = ({ theme, mbti, mbtiSetter }) => {
         whileHover={'hover'}
         variants={btnVariants}
         className={`${styles.container} ${
-          // clickedBtn === 'A' ? styles.clicked : ''
-          clickedBtn !== 'A' ? '' : styles[themeColor]
+          clickedBtn === 'A' ? styles.clicked : ''
         }`}
         onClick={() => onClickBtn('A')}
       >
-        A
+        <span>A</span>
+        <span>{description.A}</span>
       </motion.div>
       <motion.div
         whileHover={'hover'}
         variants={btnVariants}
         className={`${styles.container} ${
-          // clickedBtn === 'B' ? styles.clicked : ''
-          clickedBtn !== 'B' ? '' : styles[themeColor]
+          clickedBtn === 'B' ? styles.clicked : ''
         }`}
         onClick={() => onClickBtn('B')}
       >
-        B
+        <span>B</span>
+        <span className={styles['B-color']}>{description.B}</span>
       </motion.div>
     </>
   );

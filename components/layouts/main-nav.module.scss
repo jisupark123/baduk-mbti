@@ -5,6 +5,7 @@
   width: 100%;
   height: $nav-height;
   background-color: $bg--element1;
+  z-index: $nav-z_index;
 }
 .nav {
   width: $desktop-nav-width;

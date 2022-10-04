@@ -137,90 +137,111 @@ const Test: NextPage<QuestionProps> = () => {
           </div>
         </div>
         <div className={styles.main}>
-          <div className={styles.question}>
+          <section className={styles.section}>
             <div className={`${styles.title} ${styles['red-color']}`}>Q1</div>
-            <div className={styles['baduk-board']}>
-              {/* <img
-                src={publicFolderRoot + level + "/" + '_1.png'}
-                alt='바둑판'
-                style={{
-                  width: `${badukBoardWidth}px`,
-                  height: `${badukBoardWidth}px`,
-                }}
-              /> */}
-              <Image
-                src={`/${level}/${level}_1_1.png`}
-                alt='바둑판'
-                width={badukBoardWidth}
-                height={badukBoardWidth}
-                loading='eager'
-              />
+            <div className={styles.question}>
+              <div className={styles['baduk-board']}>
+                <Image
+                  src={`/${level}/${level}_1_1.png`}
+                  alt='바둑판'
+                  layout='fill'
+                  objectFit='cover'
+                  loading='eager'
+                />
+              </div>
+              <div className={`${styles.btns}`}>
+                <AB_Btns
+                  theme={theme}
+                  mbti={{ A: 'E', B: 'I' }}
+                  description={{
+                    title: '서로 집을 차지한 상황이다.',
+                    A: '상대 집을 먼저 부수러 가는 적극적인 수',
+                    B: '내 집을 지키는 안전한 수',
+                  }}
+                  mbtiSetter={setQuestion1}
+                />
+              </div>
             </div>
-            <div className={`${styles.btns} ${styles['red-border']}`}>
-              <AB_Btns
-                theme={theme}
-                mbti={{ A: 'E', B: 'I' }}
-                mbtiSetter={setQuestion1}
-              />
-            </div>
-          </div>
-          <div className={styles.question}>
+          </section>
+          <section className={styles.section}>
             <div className={`${styles.title} ${styles['red-color']}`}>Q2</div>
-            <div className={styles['baduk-board']}>
-              <Image
-                src={`/${level}/${level}_2_1.png`}
-                alt='바둑판'
-                width={badukBoardWidth}
-                height={badukBoardWidth}
-                loading='eager'
-              />
+            <div className={styles.question}>
+              <div className={styles['baduk-board']}>
+                <Image
+                  src={`/${level}/${level}_2_1.png`}
+                  alt='바둑판'
+                  layout='fill'
+                  objectFit='cover'
+                  loading='eager'
+                />
+              </div>
+              <div className={`${styles.btns}`}>
+                <AB_Btns
+                  theme={theme}
+                  mbti={{ A: 'N', B: 'S' }}
+                  description={{
+                    title: '서로 집을 차지한 상황이다.',
+                    A: '당장 확실한 집을 지키기보단 미래를 위한 투자',
+                    B: '내 집을 지키는 확실한 수',
+                  }}
+                  mbtiSetter={setQuestion2}
+                />
+              </div>
             </div>
-            <div className={`${styles.btns} ${styles['red-border']}`}>
-              <AB_Btns
-                theme={theme}
-                mbti={{ A: 'N', B: 'S' }}
-                mbtiSetter={setQuestion2}
-              />
-            </div>
-          </div>
-          <div className={styles.question}>
+          </section>
+          <section className={styles.section}>
             <div className={`${styles.title} ${styles['red-color']}`}>Q3</div>
-            <div className={styles['baduk-board']}>
-              <Image
-                src={`/${level}/${level}_3_1.png`}
-                alt='바둑판'
-                width={badukBoardWidth}
-                height={badukBoardWidth}
-                loading='eager'
-              />
+
+            <div className={styles.question}>
+              <div className={styles['baduk-board']}>
+                <Image
+                  src={`/${level}/${level}_3_1.png`}
+                  alt='바둑판'
+                  layout='fill'
+                  objectFit='cover'
+                  loading='eager'
+                />
+              </div>
+              <div className={`${styles.btns}`}>
+                <AB_Btns
+                  theme={theme}
+                  mbti={{ A: 'F', B: 'T' }}
+                  description={{
+                    title: '흑이 백돌을 잡으려는 상황',
+                    A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다',
+                    B: '좀 더 효율적인 수를 추구하나 나중에 득인지는 모른다.(뒷북)',
+                  }}
+                  mbtiSetter={setQuestion3}
+                />
+              </div>
             </div>
-            <div className={`${styles.btns} ${styles['red-border']}`}>
-              <AB_Btns
-                theme={theme}
-                mbti={{ A: 'F', B: 'T' }}
-                mbtiSetter={setQuestion3}
-              />
-            </div>
-          </div>
-          <div className={styles.question}>
+          </section>
+          <section className={styles.section}>
             <div className={`${styles.title} ${styles['red-color']}`}>Q4</div>
-            <div className={styles['baduk-board']}>
-              <Image
-                src={`/${level}/${level}_4_1.png`}
-                alt='바둑판'
-                width={badukBoardWidth}
-                height={badukBoardWidth}
-                loading='eager'
-              />
+            <div className={styles.question}>
+              <div className={styles['baduk-board']}>
+                <Image
+                  src={`/${level}/${level}_4_1.png`}
+                  alt='바둑판'
+                  layout='fill'
+                  objectFit='cover'
+                  loading='eager'
+                />
+              </div>
+              <div className={`${styles.btns}`}>
+                <AB_Btns
+                  theme={theme}
+                  mbti={{ A: 'P', B: 'J' }}
+                  description={{
+                    title: '초반 구상 중임',
+                    A: '갑자기 오늘따라 A로 변형하고 싶음',
+                    B: '원래 여기를 생각했음(두려고 했음)',
+                  }}
+                  mbtiSetter={setQuestion4}
+                />
+              </div>
             </div>
-            <div className={`${styles.btns} ${styles['red-border']}`}>
-              <AB_Btns
-                theme={theme}
-                mbti={{ A: 'P', B: 'J' }}
-                mbtiSetter={setQuestion4}
-              />
-            </div>
-          </div>
+          </section>
           <div className={styles.submit}>
             <button
               className={theme === 'red' ? styles['red-bg'] : styles['blue-bg']}
