@@ -37,6 +37,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const mbtis = mbtiList.map((obj) => obj.badukMbti);
     const sameMbtis = mbtis.filter((mbti) => mbti === tester.badukMbti).length;
 
+    //
     // 1% ~ 99% -> 소수점 x
     // 0% ~ 1% -> 소수점 1자리
     let myMbtiPercentage = (sameMbtis / mbtis.length) * 100;
