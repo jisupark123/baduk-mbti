@@ -15,6 +15,8 @@ import { useRouter } from 'next/router';
 import Layout from '../components/layouts/layout';
 import MbtiDetail from '../components/ui/mbti-detail';
 import Image from 'next/image';
+import { useNotice } from '../store/notice-context';
+import { PostMbtiResponse } from './api/mbti';
 
 interface QuestionProps {
   clickedTheme?: Theme;
@@ -39,15 +41,41 @@ const Test: NextPage<QuestionProps> = () => {
   const [question3, setQuestion3] = useState<'F' | 'T' | null>(null);
   const [question4, setQuestion4] = useState<'J' | 'P' | null>(null);
   const [selectedMbti, setSelectedMbti] = useState<string | null>(null);
-  const [showResult, setShowResult] = useState(false);
+  const [result, setResult] = useState({ show: false, myMbtiPercentage: 0 });
   const router = useRouter();
+  const notice = useNotice();
 
-  function handleShowResult() {
+  async function handleShowResult() {
     if ([question1, question2, question3, question4].includes(null)) {
       alert('모든 문항에 답변해주세요');
       return;
     }
-    setShowResult(true);
+    notice.loading('결과를 불러오는 중입니다.');
+    const payload = {
+      mbti: question1! + question2! + question3! + question4!,
+      name: localStorage.getItem(LOCALSTORAGE_KEY_NAME),
+      level,
+      problems: [
+        `${level}_1_1.png`,
+        `${level}_2_1.png`,
+        `${level}_3_1.png`,
+        `${level}_4_1.png`,
+      ],
+    };
+    const data: PostMbtiResponse = await fetch('/api/mbti', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    }).then((res) => res.json());
+    if (data.error) {
+      notice.failed(data.error);
+      return;
+    } else if (data.ok) {
+      notice.close();
+      setResult({ show: true, myMbtiPercentage: data.myMbtiPercentage });
+    }
   }
 
   function showAllResults() {
@@ -90,17 +118,23 @@ const Test: NextPage<QuestionProps> = () => {
   return (
     <Layout>
       <div className={styles.container}>
-        {showResult && (
+        {result.show && (
           <Overlay
             hasLeftBtn={true}
             hasCloseBtn={true}
-            onCloseHandler={() => setShowResult(false)}
+            onCloseHandler={() =>
+              setResult({ show: false, myMbtiPercentage: 0 })
+            }
             handleClickLeftBtn={goHome}
           >
             <div className={styles['overlay-container']}>
               <div className={styles['ment']}>
                 <span>{localStorage.getItem(LOCALSTORAGE_KEY_NAME)}</span>
-                <span className={styles['red-color']}>님의 MBTI는?</span>
+                <span className={styles['red-color']}>
+                  님의 MBTI는 참가자의
+                </span>
+                <span>{result.myMbtiPercentage}%</span>
+                <span className={styles['red-color']}>입니다</span>
               </div>
               <div className={styles['mbti-card']}>
                 <MbtiDetail type={selectedMbti} theme={theme} />

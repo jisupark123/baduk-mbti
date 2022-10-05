@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// 1. 고급 중급 초급
+// 2. E N T J
+// 3. 문제 번호
+// ex) 고급_1_10 -> 고급 문제 중 첫번째(I,E)의 문제 번호 10번
+// ex) 초급_3_5 -> 초급 문제 중 세번째(T,F)의 문제 번호 5번
+
+enum MBTI {
+  INTP
+  INTJ
+  INFP
+  INFJ
+  ISTP
+  ISTJ
+  ISFP
+  ISFJ
+  ENTP
+  ENTJ
+  ENFP
+  ENFJ
+  ESTP
+  ESTJ
+  ESFP
+  ESFJ
+}
+
+enum Level {
+  elementary
+  middle
+  hard
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+// 이름, 바둑 mbti, 실제 mbti, 문제 번호
+
+model Tester {
+  id        Int       @id @default(autoincrement())
+  name      String
+  level     Level
+  badukMbti MBTI
+  realMbti  MBTI?
+  problems  Problem[]
+}
+
+// many-to-many 참고 레퍼런스
+// https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#implicit-many-to-many-relations
+model Problem {
+  id      String   @id
+  level   Level
+  // Tester   Tester? @relation(fields: [testerId], references: [id])
+  testers Tester[]
+}

@@ -12,10 +12,10 @@ import MbtiCard from '../components/ui/mbti-card';
 import MbtiDetail from '../components/ui/mbti-detail';
 import Overlay from '../components/ui/overlay';
 import styles from './all.module.scss';
-import { LOCALSTORAGE_KEY_THEME, Theme } from './_app';
+import { Theme } from './_app';
 
 const All = () => {
-  const [theme, setTheme] = useState<Theme>('red');
+  const [theme, setTheme] = useState<Theme>('blue');
   const [selectedMbti, setSelectedMbti] = useState<MbtiTypes | null>(null);
   function handleCardClick(mbtiType: MbtiTypes) {
     setSelectedMbti(mbtiType);
@@ -23,12 +23,7 @@ const All = () => {
   function handleCardClose() {
     setSelectedMbti(null);
   }
-  useEffect(() => {
-    const selectedTheme = localStorage.getItem(LOCALSTORAGE_KEY_THEME);
-    if (selectedTheme === 'red' || selectedTheme === 'blue') {
-      setTheme(selectedTheme);
-    }
-  }, [theme]);
+
   return (
     <div className={styles.wrapper}>
       <Layout>

@@ -9,6 +9,7 @@ $modal-header-height: 50px;
 $backdrop-z_index: 30;
 $modal-z_index: calc($backdrop-z_index + 1);
 $nav-z_index: 100;
+$notice-z_index: 10000;
 
 // colors
 
@@ -37,6 +38,7 @@ $primary: #6b7af7;
 $secondary: #828086;
 $success: #82d268;
 $info: #c7cdff;
+$error: #f8d7da;
 $warning: #ffd89d;
 $danger: #e60f6c;
 $light: #f0f0f5;
