@@ -1,9 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { MbtiTypes } from '../../components/demo/mbti';
 import client from '../../lib/server/client';
 import withHandler, { ResponseType } from '../../lib/server/withHandler';
 
 export interface PostMbtiResponse extends ResponseType {
   myMbtiPercentage: number;
+}
+interface IMbti {
+  badukMbti: MbtiTypes;
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -28,7 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     console.log(tester);
-    const mbtiList = await client.tester.findMany({
+    const mbtiList: IMbti[] = await client.tester.findMany({
       select: {
         badukMbti: true,
       },
