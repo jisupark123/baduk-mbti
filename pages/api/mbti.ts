@@ -3,6 +3,9 @@ import { MbtiTypes } from '../../components/demo/mbti';
 import client from '../../lib/server/client';
 import withHandler, { ResponseType } from '../../lib/server/withHandler';
 
+export interface GetMbtiResponse extends ResponseType {
+  testerCount: number;
+}
 export interface PostMbtiResponse extends ResponseType {
   myMbtiPercentage: number;
 }
@@ -11,6 +14,10 @@ interface IMbti {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method === 'GET') {
+    const testerCount = await client.tester.count();
+    return res.json({ ok: true, testerCount });
+  }
   if (req.method === 'POST') {
     const {
       body: { mbti: badukMbti, name, level, problems },

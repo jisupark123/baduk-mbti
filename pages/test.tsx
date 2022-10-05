@@ -294,7 +294,7 @@ const Test: NextPage<QuestionProps> = () => {
               className={theme === 'red' ? styles['red-bg'] : styles['blue-bg']}
               onClick={handleShowResult}
             >
-              결과 확인하기
+              결과는?
             </button>
           </div>
         </div>

@@ -49,6 +49,7 @@ model Tester {
   id        Int       @id @default(autoincrement())
   name      String
   level     Level
+  testedAt  DateTime  @default(now())
   badukMbti MBTI
   realMbti  MBTI?
   problems  Problem[]

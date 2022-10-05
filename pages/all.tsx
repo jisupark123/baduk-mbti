@@ -1,20 +1,28 @@
+import { NextPage } from 'next';
 import React, { useEffect, useState } from 'react';
 import {
   administrativeTypeMbti,
   analystTypeMbti,
   diplomaticTypeMbti,
   explorerTypeMbti,
+  IAllMbtiPecentage,
   MbtiTypes,
+  mbtiTypesList,
 } from '../components/demo/mbti';
 import Layout from '../components/layouts/layout';
 import CenterFixed from '../components/ui/CenterFixed';
 import MbtiCard from '../components/ui/mbti-card';
 import MbtiDetail from '../components/ui/mbti-detail';
 import Overlay from '../components/ui/overlay';
+import client from '../lib/server/client';
 import styles from './all.module.scss';
 import { Theme } from './_app';
 
-const All = () => {
+interface IMbtiPercentageProps {
+  allMbtiPecentage: IAllMbtiPecentage;
+}
+
+const All: NextPage<IMbtiPercentageProps> = ({ allMbtiPecentage }) => {
   const [theme, setTheme] = useState<Theme>('blue');
   const [selectedMbti, setSelectedMbti] = useState<MbtiTypes | null>(null);
   function handleCardClick(mbtiType: MbtiTypes) {
@@ -63,7 +71,11 @@ const All = () => {
             {selectedMbti && (
               <Overlay onCloseHandler={handleCardClose} hasCloseBtn={true}>
                 <CenterFixed>
-                  <MbtiDetail type={selectedMbti} theme={theme} />
+                  <MbtiDetail
+                    type={selectedMbti}
+                    theme={theme}
+                    mbtiPercentage={allMbtiPecentage[selectedMbti]}
+                  />
                 </CenterFixed>
               </Overlay>
             )}
@@ -87,3 +99,29 @@ const All = () => {
 };
 
 export default All;
+
+// 모든 mbti의 퍼센트 뽑아오기
+interface IMbti {
+  badukMbti: MbtiTypes;
+}
+
+export async function getServerSideProps() {
+  const mbtis: IMbti[] = await client.tester.findMany({
+    select: { badukMbti: true },
+  });
+  const mbtiList = mbtis.map((mbti) => mbti.badukMbti); // ["INTP","ENFP","INTP"...]
+  const allMbtiPecentage: { [mbti: string]: number } = {};
+  for (let mbtiType of mbtiTypesList) {
+    let percentage =
+      (mbtiList.filter((mbti) => mbti === mbtiType).length / mbtiList.length) *
+      100;
+    percentage =
+      percentage >= 1
+        ? (percentage = Number(percentage.toFixed(0)))
+        : (percentage = Number(percentage.toFixed(1)));
+    allMbtiPecentage[mbtiType] = percentage; // INTP:33, ENTP:0.5
+  }
+  console.log(allMbtiPecentage);
+
+  return { props: { allMbtiPecentage } };
+}

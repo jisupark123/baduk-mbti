@@ -12,12 +12,19 @@
 
 .header {
   margin-bottom: 40px;
-  h1 {
-    font-size: 2.4rem;
-    text-align: center;
-    font-weight: 500;
+  .title {
+    @include flex-center;
     margin-bottom: 20px;
+    h1 {
+      margin-right: 1rem;
+      font-size: 2.4rem;
+      font-weight: 500;
+    }
+    .percentage {
+      font-size: 2rem;
+    }
   }
+
   .pro {
     margin-bottom: 5px;
     font-size: 1.8rem;

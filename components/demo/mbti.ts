@@ -159,6 +159,24 @@ export const MBTIS: IMBTI[] = [
   },
 ];
 
+export const mbtiTypesList: MbtiTypes[] = [
+  'INTP',
+  'INTJ',
+  'INFP',
+  'INFJ',
+  'ISTP',
+  'ISTJ',
+  'ISFP',
+  'ISFJ',
+  'ENTP',
+  'ENTJ',
+  'ENFP',
+  'ENFJ',
+  'ESTP',
+  'ESTJ',
+  'ESFP',
+  'ESFJ',
+];
 export type MbtiTypes =
   | 'INTP'
   | 'INTJ'
@@ -176,6 +194,25 @@ export type MbtiTypes =
   | 'ESTJ'
   | 'ESFP'
   | 'ESFJ';
+
+export interface IAllMbtiPecentage {
+  INTP: number;
+  INTJ: number;
+  INFP: number;
+  INFJ: number;
+  ISTP: number;
+  ISTJ: number;
+  ISFP: number;
+  ISFJ: number;
+  ENTP: number;
+  ENTJ: number;
+  ENFP: number;
+  ENFJ: number;
+  ESTP: number;
+  ESTJ: number;
+  ESFP: number;
+  ESFJ: number;
+}
 
 export const analystTypeMbti = MBTIS.slice(0, 4); //분석가형
 export const diplomaticTypeMbti = MBTIS.slice(4, 8); //외교관형

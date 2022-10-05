@@ -14,6 +14,6 @@ MBTI 각각의 유형에 해당하는 바둑 문제를 풀어서 MBTI를 알아�
 
 ### API
 
-GET /api/mbti -> mbti (통계)정보 가져오기
-POST /api/mbti -> MBTI 결과 DB에 저장
+GET /api/mbti -> mbti 전체 참가자 수 반환
+POST /api/mbti -> MBTI 결과 DB에 저장, (통계)정보 반환
 POST /api/manage/real-mbti -> 사용자의 진짜 mbti DB에 저장

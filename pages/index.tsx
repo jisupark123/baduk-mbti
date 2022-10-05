@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import React, { FormEvent, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import InvitationCard from '../components/ui/invitation-card';
 import Overlay from '../components/ui/overlay';
@@ -12,6 +12,11 @@ import {
   LOCALSTORAGE_KEY_THEME,
   Theme,
 } from './_app';
+import client from '../lib/server/client';
+
+interface IProps {
+  testerCount: number;
+}
 
 const LevelArray: Level[] = ['초급', '중급', '고급'];
 
@@ -22,11 +27,12 @@ const btnVariants: Variants = {
   },
 };
 
-const Home: NextPage = () => {
+const Home: NextPage<IProps> = (props) => {
   // const [accepted, setAccepted] = useState(false); // 게임 초대 수락?
   const [name, setName] = useState('');
   const [level, setLevel] = useState<Level | undefined>(undefined);
   const router = useRouter();
+
   function handleOverlayClose() {}
   function gameStart() {
     if (name.length === 0) {
@@ -93,8 +99,18 @@ const Home: NextPage = () => {
                   ))}
                 </div>
               </div>
-              <div className={styles['start-btn']}>
-                <button onClick={gameStart}>시작</button>
+              <div className={`${styles['start-btn']}`}>
+                <button
+                  onClick={gameStart}
+                  className={name.length && level ? styles.ready : ''}
+                >
+                  시작
+                </button>
+              </div>
+              <div className={styles['tester-count']}>
+                <span>참여자 수 |</span>
+                <span>{props.testerCount}</span>
+                <span>명</span>
               </div>
             </div>
           }
@@ -105,3 +121,8 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+  const testerCount = await client.tester.count();
+  return { props: { testerCount } };
+}

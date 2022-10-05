@@ -10,10 +10,10 @@
 }
 
 .red-gradient {
-  background: linear-gradient(355deg, $bg--main-page 300px, $theme--red 0);
+  background: linear-gradient(355deg, $bg--element1 300px, $theme--red 0);
 }
 .blue-gradient {
-  background: linear-gradient(355deg, $bg--main-page 300px, $theme--blue 0);
+  background: linear-gradient(355deg, $bg--element1 300px, $theme--blue 0);
 }
 
 .header {
@@ -95,7 +95,7 @@
     padding: 20px 30px;
     color: white;
     font-size: 2rem;
-    border-radius: 50px;
+    border-radius: 5px;
   }
 }
 
