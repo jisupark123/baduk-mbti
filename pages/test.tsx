@@ -7,7 +7,6 @@ import {
   Level,
   LOCALSTORAGE_KEY_LEVEL,
   LOCALSTORAGE_KEY_NAME,
-  LOCALSTORAGE_KEY_THEME,
   Theme,
 } from './_app';
 import Overlay from '../components/ui/overlay';
@@ -75,6 +74,7 @@ const Test: NextPage<QuestionProps> = () => {
     } else if (data.ok) {
       notice.close();
       setResult({ show: true, myMbtiPercentage: data.myMbtiPercentage });
+      return;
     }
   }
 
