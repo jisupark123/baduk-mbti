@@ -28,13 +28,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     console.log(tester);
-    const mbtis = await client.tester
-      .findMany({
-        select: {
-          badukMbti: true,
-        },
-      })
-      .then((res) => res.map((obj) => obj.badukMbti));
+    const mbtiList = await client.tester.findMany({
+      select: {
+        badukMbti: true,
+      },
+    });
+
+    const mbtis = mbtiList.map((obj) => obj.badukMbti);
     const sameMbtis = mbtis.filter((mbti) => mbti === tester.badukMbti).length;
 
     // 1% ~ 99% -> 소수점 x
