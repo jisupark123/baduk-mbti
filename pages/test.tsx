@@ -16,6 +16,7 @@ import MbtiDetail from '../components/ui/mbti-detail';
 import Image from 'next/image';
 import { useNotice } from '../store/notice-context';
 import { PostMbtiResponse } from './api/mbti';
+import useMutation from '../lib/client/useMutation';
 
 interface QuestionProps {
   clickedTheme?: Theme;
@@ -43,6 +44,32 @@ const Test: NextPage<QuestionProps> = () => {
   const [result, setResult] = useState({ show: false, myMbtiPercentage: 0 });
   const router = useRouter();
   const notice = useNotice();
+  const [
+    saveMbti,
+    {
+      data: saveMbtiResponseData,
+      loading: saveMbtiLoading,
+      error: saveMbtiError,
+    },
+  ] = useMutation<PostMbtiResponse>({
+    method: 'POST',
+    url: '/api/mbti',
+  });
+
+  useEffect(() => {
+    if (saveMbtiResponseData?.ok) {
+      notice.close();
+      setResult({
+        show: true,
+        myMbtiPercentage: saveMbtiResponseData.myMbtiPercentage,
+      });
+      return;
+    }
+    if (saveMbtiResponseData?.error) {
+      notice.failed(saveMbtiResponseData.error);
+      return;
+    }
+  }, [saveMbtiResponseData, saveMbtiError, notice]);
 
   async function handleShowResult() {
     if ([question1, question2, question3, question4].includes(null)) {
@@ -61,21 +88,7 @@ const Test: NextPage<QuestionProps> = () => {
         `${level}_4_1.png`,
       ],
     };
-    const data: PostMbtiResponse = await fetch('/api/mbti', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    }).then((res) => res.json());
-    if (data.error) {
-      notice.failed(data.error);
-      return;
-    } else if (data.ok) {
-      notice.close();
-      setResult({ show: true, myMbtiPercentage: data.myMbtiPercentage });
-      return;
-    }
+    saveMbti(payload);
   }
 
   function showAllResults() {

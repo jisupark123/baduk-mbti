@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+interface UseMutationParams {
+  method: 'POST' | 'PUT';
+  url: string;
+}
+
 interface UseMutationState<T> {
   loading: boolean;
   data?: T;
@@ -8,9 +13,10 @@ interface UseMutationState<T> {
 
 type UseMutationResult<T> = [(data: any) => void, UseMutationState<T>];
 
-export default function useMutation<T = any>(
-  url: string
-): UseMutationResult<T> {
+export default function useMutation<T = any>({
+  method,
+  url,
+}: UseMutationParams): UseMutationResult<T> {
   const [state, setState] = useState<UseMutationState<T>>({
     loading: false,
     data: undefined,
@@ -19,7 +25,7 @@ export default function useMutation<T = any>(
   function mutation(data: any) {
     setState((prev) => ({ ...prev, loading: true }));
     fetch(url, {
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
       },

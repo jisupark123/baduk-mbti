@@ -10,12 +10,11 @@ type method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 interface ConfigType {
   methods: method[];
-  privateMethods?: method[];
   handler: (req: NextApiRequest, res: NextApiResponse) => void;
 }
 /**
  * 올바른 method인지 확인하고, try,catch 같은 진부한 코드를 처리한다.
- * @param {methods('GET' | 'POST' | 'DELETE'),private, handler(handler)}
+ * @param {methods('GET' | 'POST' | 'DELETE'), handler(handler)}
  */
 function withHandler({ methods, handler }: ConfigType) {
   return async function (
