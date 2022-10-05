@@ -11,8 +11,6 @@ interface IMbti {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'GET') {
-  }
   if (req.method === 'POST') {
     const {
       body: { mbti: badukMbti, name, level, problems },
