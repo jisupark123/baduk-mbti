@@ -1,5 +1,7 @@
 # 바둑으로 알아보는 MBTI
 
+https://baduk-mbti.vercel.app
+
 ## Detail
 
 MBTI 각각의 유형에 해당하는 바둑 문제를 풀어서 MBTI를 알아본다.
