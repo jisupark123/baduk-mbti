@@ -143,7 +143,7 @@ export const MBTIS: IMBTI[] = [
     id: 'ESTP',
     type: '탐험가형',
     detailType: '사업가',
-    pro: '김은지',
+    pro: '김진휘',
     tags: ['사로잡다', '의욕_UP', '카리스마', '지도자'],
     description:
       '대담하게 승부에 임해 새로운 수에 대한 두려움이 없습니다. 하지만 좋은 바둑도 쉽게 역전 당할 수 있으니 차분하게 둘 필요가 있습니다.',
