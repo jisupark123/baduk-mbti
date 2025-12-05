@@ -15,7 +15,7 @@ export default function Result() {
   const { state } = useLocation();
   const { data: mbtiStats, isLoading, isError } = useMbtiStats();
 
-  const testResult: Mbti | undefined = state?.testResult ?? 'ENFJ';
+  const testResult: Mbti | undefined = state?.testResult;
 
   useEffect(() => {
     if (!testResult) {
