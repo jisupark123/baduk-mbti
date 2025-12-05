@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Maximize, Minimize } from 'lucide-react';
 
@@ -13,6 +13,19 @@ export default function FullScreenButton() {
     }
     setIsFullscreen(!isFullscreen);
   };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      // 문서의 전체화면 요소가 존재하는지 확인하여 상태 동기화
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
 
   return (
     <motion.button
