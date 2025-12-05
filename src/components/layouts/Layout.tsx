@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router';
 
 import { BadukBoardCTA } from '@/components/BadukBoardCTA';
+import FullScreenButton from '@/components/FullScreenButton';
 import { Navigation } from '@/components/layouts/Navigation';
 
 export default function Layout() {
@@ -15,6 +16,7 @@ export default function Layout() {
         {/* 각 페이지에서 min-h-screen, pt-[52px]를 설정해야 함 */}
         <Outlet />
       </main>
+      <FullScreenButton />
     </div>
   );
 }
