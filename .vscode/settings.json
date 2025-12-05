@@ -1,0 +1,21 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+    // "source.organizeImports": "explicit" // 안쓰는 import 정리
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+
+  // 절대 경로로 자동완성 추천
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.quoteStyle": "single", // 자동완성시 따옴표 스타일
+  "javascript.preferences.quoteStyle": "single",
+
+  // css unknownAtRules 무시
+  "css.lint.unknownAtRules": "ignore"
+}

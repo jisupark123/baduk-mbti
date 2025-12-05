@@ -1,0 +1,49 @@
+@theme {
+  /* --color-primary: #4f39f6;
+  --color-primary-hover: #3e2ede;
+  --color-secondary: #7c86ff;
+  --color-bg: #17171c;
+  --color-dark-gray: #2c2c36;
+  --color-light-gray: #4d4d59;
+  --color-dark-text: rgba(248, 248, 255, 0.6);
+  --color-light-text: rgba(253, 253, 254, 0.9);
+  --color-danger: #e7000b;
+  --color-danger-hover: #b50009; */
+
+  /* 원래 파일 */
+  --color-theme-red: rgb(249, 24, 208);
+  --color-theme-blue: #1d05f6;
+  --color-theme-tag-blue: #6b7af7;
+  --color-light-green: rgb(7, 245, 138);
+  --color-bg-main-page: #f8f9fa;
+  --color-bg-element1: #ffffff;
+  --color-bg-element2: #f8f9fa;
+  --color-blue: #6b7af7;
+  --color-indigo: #6610f2;
+  --color-purple: #9a77dc;
+  --color-pink: #f4d3e7;
+  --color-red: #e60f6c;
+  --color-orange: #fd7e14;
+  --color-yellow: #ffd89d;
+  --color-green: #82d268;
+  --color-teal: #20c997;
+  --color-cyan: #c7cdff;
+  --color-white: #fff;
+  --color-gray: #828086;
+  --color-gray-dark: #3f3f3f;
+  --color-primary: #6b7af7;
+  --color-secondary: #828086;
+  --color-success: #82d268;
+  --color-info: #c7cdff;
+  --color-error: #f8d7da;
+  --color-warning: #ffd89d;
+  --color-danger: #e60f6c;
+  --color-light: #f0f0f5;
+  --color-dark: #616063;
+  --color-white-smoke: #f5f5f5;
+  --color-cloud: #ecf0f1;
+  --color-black: #000;
+
+  --spacing-nav-height: 6.5rem;
+  --spacing-desktop-nav-width: 1024px;
+}

@@ -1,0 +1,157 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
+/* Heading */
+@utility heading-5xl {
+  @apply text-5xl font-bold leading-[1.4];
+}
+
+@utility heading-4xl {
+  @apply text-4xl font-bold leading-[1.4];
+}
+
+@utility heading-3xl {
+  @apply text-3xl font-bold leading-[1.4];
+}
+
+@utility heading-2xl {
+  @apply text-2xl font-bold leading-[1.4];
+}
+
+@utility heading-xl {
+  @apply text-xl font-bold leading-[1.4];
+}
+
+@utility heading-lg {
+  @apply text-lg font-bold leading-[1.4];
+}
+
+@utility heading-md {
+  @apply text-base font-bold leading-[1.4];
+}
+
+@utility heading-sm {
+  @apply text-sm font-bold leading-[1.4];
+}
+
+/* Label */
+@utility label-4xl {
+  @apply text-4xl font-semibold leading-normal;
+}
+@utility label-3xl {
+  @apply text-3xl font-semibold leading-normal;
+}
+@utility label-2xl {
+  @apply text-2xl font-semibold leading-normal;
+}
+
+@utility label-xl {
+  @apply text-xl font-semibold leading-normal;
+}
+
+@utility label-lg {
+  @apply text-lg font-semibold leading-normal;
+}
+
+@utility label-md {
+  @apply text-base font-semibold leading-normal;
+}
+
+@utility label-sm {
+  @apply text-sm font-semibold leading-normal;
+}
+
+@utility label-xs {
+  @apply text-xs font-semibold leading-normal;
+}
+
+/* Paragraph */
+@utility paragraph-3xl {
+  @apply text-3xl font-normal leading-[1.6];
+}
+
+@utility paragraph-2xl {
+  @apply text-2xl font-normal leading-[1.6];
+}
+
+@utility paragraph-xl {
+  @apply text-xl font-normal leading-[1.6];
+}
+
+@utility paragraph-lg {
+  @apply text-lg font-normal leading-[1.6];
+}
+
+@utility paragraph-md {
+  @apply text-base font-normal leading-[1.6];
+}
+
+@utility paragraph-sm {
+  @apply text-sm font-normal leading-[1.6];
+}
+
+@utility paragraph-xs {
+  @apply text-xs font-normal leading-[1.6];
+}

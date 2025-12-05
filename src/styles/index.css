@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+@plugin "tailwindcss-animate";
+@import './theme.css';
+@import './typography.css';
+@import './figmaGlobals.css';
+
+:root {
+  font-family: 'Pretendard', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* @media (max-width: 1024px) { html { font-size: 9px; } }
+@media (max-width: 768px)  { html { font-size: 8px; } }
+@media (max-width: 480px)  { html { font-size: 7.5px; } } */
+
+body {
+  background-color: var(--color-bg-main-page);
+  color: var(--color-black);
+}
+
+input {
+  outline: none;
+}
+
+button {
+  @apply cursor-pointer;
+}
