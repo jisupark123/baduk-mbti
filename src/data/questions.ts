@@ -26,7 +26,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
       description: '서로 집을 차지한 상황',
       options: {
         A: '당장 확실한 집을 지키기보단 미래를 위한 투자',
-        B: '내 집을 지키는 확실한 수',
+        B: '일단 내 집을 안전하게 확보하는 수',
       },
       imagePath: '/beginner/2.png',
     },
@@ -35,7 +35,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
       mbti: { A: 'F', B: 'T' },
       description: '흑이 백돌을 잡으려는 상황',
       options: {
-        A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다',
+        A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다.',
         B: '좀 더 효율적인 수를 추구하나 나중에 득인지는 모른다.',
       },
       imagePath: '/beginner/3.png',
@@ -68,7 +68,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
       description: '서로 집을 차지한 상황',
       options: {
         A: '당장 확실한 집을 지키기보단 미래를 위한 투자',
-        B: '내 집을 지키는 확실한 수',
+        B: '일단 내 집을 안전하게 확보하는 수',
       },
       imagePath: '/intermediate/2.png',
     },
@@ -77,7 +77,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
       mbti: { A: 'F', B: 'T' },
       description: '흑이 백돌을 잡으려는 상황',
       options: {
-        A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다',
+        A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다.',
         B: '좀 더 효율적인 수를 추구하나 나중에 득인지는 모른다.',
       },
       imagePath: '/intermediate/3.png',
@@ -99,18 +99,18 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
       mbti: { A: 'E', B: 'I' },
       description: '서로 집을 차지한 상황',
       options: {
-        A: '상대 집을 먼저 부수러 가는 적극적인 수',
-        B: '내 집을 지키는 안전한 수',
+        A: '상대 집을 부수러 가는 적극적인 수',
+        B: '내 모양을 지키는 안정적인 수',
       },
       imagePath: '/advanced/1.png',
     },
     {
       title: 'Q2',
       mbti: { A: 'N', B: 'S' },
-      description: '서로 집을 차지한 상황',
+      description: '전투가 벌어진 상황',
       options: {
-        A: '당장 확실한 집을 지키기보단 미래를 위한 투자',
-        B: '내 집을 지키는 확실한 수',
+        A: '실리를 내주고 주도권을 잡는 수',
+        B: '안정적으로 내 돌을 살린 후 나중을 기약하는 수',
       },
       imagePath: '/advanced/2.png',
     },
@@ -119,7 +119,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
       mbti: { A: 'F', B: 'T' },
       description: '흑이 백돌을 잡으려는 상황',
       options: {
-        A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다',
+        A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다.',
         B: '좀 더 효율적인 수를 추구하나 나중에 득인지는 모른다.',
       },
       imagePath: '/advanced/3.png',
