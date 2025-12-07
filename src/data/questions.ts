@@ -68,7 +68,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
     {
       title: 'Q2',
       mbti: { A: 'N', B: 'S' },
-      description: '서로 집을 차지한 상황',
+      description: '정석 진행 중인 상황',
       options: {
         A: '실리를 내주고 두터움을 얻는 수',
         B: '일단 내 집을 확보하는 수',
@@ -102,7 +102,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
     {
       title: 'Q1',
       mbti: { A: 'E', B: 'I' },
-      description: '서로 집을 차지한 상황',
+      description: '포석 진행 중인 상황',
       options: {
         A: '상대 집을 부수러 가는 적극적인 수',
         B: '내 모양을 지키는 안정적인 수',
