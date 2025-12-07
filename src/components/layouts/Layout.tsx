@@ -1,4 +1,4 @@
-import { isMobile } from 'react-device-detect';
+import { isDesktop, isTablet } from 'react-device-detect';
 import { Outlet } from 'react-router';
 
 import { BadukBoardCTA } from '@/components/BadukBoardCTA';
@@ -8,7 +8,7 @@ import { Navigation } from '@/components/layouts/Navigation';
 export default function Layout() {
   return (
     <div className='w-full min-h-screen flex flex-col'>
-      {!isMobile && (
+      {(isTablet || isDesktop) && (
         <header className='fixed top-0 left-0 w-full h-[80px] z-50'>
           <Navigation />
         </header>
@@ -18,7 +18,7 @@ export default function Layout() {
         <BadukBoardCTA className='absolute inset-0 z-0 max-w-2xl mx-auto pointer-events-none' gridColor='purple-400' />
         <Outlet />
       </main>
-      {!isMobile && <FullScreenButton />}
+      {(isTablet || isDesktop) && <FullScreenButton />}
     </div>
   );
 }

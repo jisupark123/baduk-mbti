@@ -1,7 +1,7 @@
 import { DialogTitle } from '@radix-ui/react-dialog';
 import { motion } from 'framer-motion';
 import { Image, Link2, QrCode, Share2 } from 'lucide-react';
-import { isMobile } from 'react-device-detect';
+import { isTablet, isDesktop } from 'react-device-detect';
 
 import { Button } from '@/components/figma/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader } from '@/components/figma/dialog';
@@ -83,24 +83,27 @@ export default function ShareOptionsModal({
                 </Button>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
-                <Button
-                  onClick={handleQrCodeShare}
-                  size='lg'
-                  className='w-full bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] rounded-xl'
-                >
-                  <span className='flex items-center justify-center gap-3'>
-                    <QrCode className='w-5 h-5' />
-                    <span className='text-base'>QR 코드로 공유하기</span>
-                  </span>
-                </Button>
-              </motion.div>
+              {/* QR 코드 스캔하기 - 태블릿, 데스크탑에서만 표시 */}
+              {(isTablet || isDesktop) && (
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+                  <Button
+                    onClick={handleQrCodeShare}
+                    size='lg'
+                    className='w-full bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] rounded-xl'
+                  >
+                    <span className='flex items-center justify-center gap-3'>
+                      <QrCode className='w-5 h-5' />
+                      <span className='text-base'>QR 코드로 공유하기</span>
+                    </span>
+                  </Button>
+                </motion.div>
+              )}
 
               {/* 링크 복사 */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: !isMobile ? 0.4 : 0.3 }}
+                transition={{ delay: isTablet || isDesktop ? 0.4 : 0.3 }}
               >
                 <Button
                   onClick={handleCopyLink}
