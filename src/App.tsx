@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router';
 import Layout from '@/components/layouts/Layout';
 import AllTypes from '@/pages/allTypes';
 import Home from '@/pages/home';
+import Intro from '@/pages/Intro';
 import MbtiTest from '@/pages/mbti-test';
 import Result from '@/pages/result';
 
@@ -11,6 +12,7 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path='/' element={<Home />} />
+        <Route path='/intro' element={<Intro />} />
         <Route path='/mbti-test' element={<MbtiTest />} />
         <Route path='/result' element={<Result />} />
         <Route path='/all-types' element={<AllTypes />} />
