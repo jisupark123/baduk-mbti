@@ -81,27 +81,16 @@ export default function Share({
         // Blob으로 변환
         const response = await fetch(dataUrl);
         const blob = await response.blob();
-        const file = new File([blob], `바둑_MBTI_${mbtiDetail.id}.png`, { type: 'image/png' });
 
-        // 모바일 공유하기 지원 시
-        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-          try {
-            await navigator.share({
-              title: `바둑 MBTI - ${mbtiDetail.id}`,
-              text: `나의 바둑 MBTI는 ${mbtiDetail.id} (${mbtiDetail.name})입니다!`,
-              files: [file],
-            });
-          } catch (error) {
-            console.log('공유 취소:', error);
-          }
-        } else {
-          // PC거나 공유하기 미지원 시 다운로드
-          const link = document.createElement('a');
-          link.download = `바둑_MBTI_${mbtiDetail.id}.png`;
-          link.href = dataUrl;
-          link.click();
-          // toast.success('이미지가 저장되었습니다.');
-        }
+        // 직접 다운로드 시도 (모바일에서도 공유하기 창 대신 다운로드 유도)
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `바둑_MBTI_${mbtiDetail.id}.png`;
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
       } catch (error) {
         console.error('이미지 생성 실패:', error);
         toast.error('이미지 생성에 실패했습니다. 다시 시도해주세요.');
