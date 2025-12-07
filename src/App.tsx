@@ -4,7 +4,7 @@ import Layout from '@/components/layouts/Layout';
 import AllTypes from '@/pages/allTypes';
 import Home from '@/pages/home';
 import MbtiTest from '@/pages/mbti-test';
-import Result from '@/pages/Result';
+import Result from '@/pages/result';
 
 function App() {
   return (

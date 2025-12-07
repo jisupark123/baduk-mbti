@@ -15,10 +15,8 @@ export const useMbtiStats = () =>
     queryKey: [MBTI_STATS_KEY],
     queryFn: async () => {
       try {
-        console.log('Fetching MBTI stats...');
         // 1. 전체 테스트 결과 조회
         const allTests = await mbtiTestRepository.findAll();
-        console.log('allTests', allTests);
         const total = allTests.length;
 
         // 2. 모든 MBTI 유형의 카운트를 0으로 초기화

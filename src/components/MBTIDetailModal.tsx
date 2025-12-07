@@ -17,8 +17,6 @@ interface MBTIDetailModalProps {
 export function MBTIDetailModal({ isOpen, onClose, type, color }: MBTIDetailModalProps) {
   const { data: mbtiStats, isLoading, isError } = useMbtiStats();
 
-  console.log(mbtiStats, isLoading, isError);
-
   if (!type) return null;
 
   return (
