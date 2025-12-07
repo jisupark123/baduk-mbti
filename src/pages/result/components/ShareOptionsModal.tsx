@@ -120,7 +120,7 @@ export default function ShareOptionsModal({
 
             {/* 안내 문구 */}
             <div className='mt-6 text-center'>
-              <p className='text-sm text-gray-500'>친구들과 함께 테스트를 즐겨보세요 ✨</p>
+              <p className='text-sm text-gray-500'>친구들과 함께 테스트를 즐겨보세요</p>
             </div>
           </div>
         </div>
