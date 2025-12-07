@@ -338,9 +338,8 @@ export default function Result() {
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
-                  className='text-xl'
                 >
-                  ✨
+                  <Sparkles className='w-5 h-5 text-yellow-300' fill='currentColor' />
                 </motion.span>
               </span>
             </Button>

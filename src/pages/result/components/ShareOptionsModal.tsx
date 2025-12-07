@@ -1,10 +1,10 @@
 import { DialogTitle } from '@radix-ui/react-dialog';
 import { motion } from 'framer-motion';
 import { Image, Link2, QrCode, Share2 } from 'lucide-react';
+import { isMobile } from 'react-device-detect';
 
 import { Button } from '@/components/figma/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader } from '@/components/figma/dialog';
-import { useDeviceType } from '@/hooks/useDeviceType';
 
 export default function ShareOptionsModal({
   open,
@@ -21,7 +21,6 @@ export default function ShareOptionsModal({
   handleQrCodeShare: () => void;
   handleCopyLink: () => void;
 }) {
-  const { isMobile } = useDeviceType();
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className='sm:max-w-[500px]'>

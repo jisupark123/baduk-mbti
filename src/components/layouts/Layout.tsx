@@ -1,13 +1,11 @@
+import { isMobile } from 'react-device-detect';
 import { Outlet } from 'react-router';
 
 import { BadukBoardCTA } from '@/components/BadukBoardCTA';
 import FullScreenButton from '@/components/FullScreenButton';
 import { Navigation } from '@/components/layouts/Navigation';
-import { useDeviceType } from '@/hooks/useDeviceType';
 
 export default function Layout() {
-  const { isMobile } = useDeviceType();
-
   return (
     <div className='w-full min-h-screen flex flex-col'>
       {!isMobile && (
