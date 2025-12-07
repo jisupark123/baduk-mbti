@@ -27,7 +27,7 @@ export default function AllTypes() {
   };
 
   return (
-    <div className='min-h-screen pt-[80px] pb-12 px-6'>
+    <div className='flex-1'>
       {/* MBTI 상세 모달 */}
       <MBTIDetailModal
         isOpen={isModalOpen}

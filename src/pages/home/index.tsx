@@ -17,7 +17,7 @@ export default function Home() {
     setShowLevelModal(false);
   };
   return (
-    <div className='min-h-screen pt-[52px] flex items-center justify-center'>
+    <div className='flex-1 flex items-center justify-center'>
       {/* 메인 컨텐츠 */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

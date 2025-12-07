@@ -49,7 +49,7 @@ export default function App() {
   };
 
   return (
-    <div className='min-h-screen pt-[80px] flex justify-center p-6'>
+    <div className='flex-1 flex justify-center'>
       <motion.div
         key={currentQuestion}
         initial={{ opacity: 0, x: 50 }}
@@ -141,17 +141,17 @@ export default function App() {
                 <Button
                   onClick={() => handleChoice(['A', 'B'][index] as 'A' | 'B')}
                   size='lg'
-                  className={`w-full py-8 text-left justify-start ${
+                  className={`w-full h-auto py-4 text-left justify-start whitespace-normal ${
                     index === 0
                       ? 'bg-linear-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600'
                       : 'bg-linear-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600'
                   } text-white shadow-xl hover:shadow-2xl transition-all duration-300`}
                 >
-                  <span className='flex items-center gap-3'>
+                  <span className='flex items-center gap-3 w-full'>
                     <span className='shrink-0 w-8 h-8 rounded-full bg-white/30 flex items-center justify-center'>
                       {['A', 'B'][index]}
                     </span>
-                    <span>{option}</span>
+                    <span className='break-keep leading-snug'>{option}</span>
                   </span>
                 </Button>
               </motion.div>
