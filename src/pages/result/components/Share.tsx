@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { toast } from 'sonner';
 
 import NameModal from '@/pages/result/components/NameModal';
@@ -20,8 +21,12 @@ export default function Share({
   userName: string;
   onUserNameChange: (name: string) => void;
 }) {
-  // 이름이 이미 있으면 바로 공유 옵션 모달을 보여줌
-  const [modal, setModal] = useState<'name' | 'shareOptions' | 'qr'>(userName ? 'shareOptions' : 'name');
+  const [searchParams] = useSearchParams();
+  const typeParam = searchParams.get('type');
+  // 이름이 이미 있거나, 공유 링크를 타고 들어온 경우(type=share) 바로 공유 옵션 모달을 보여줌
+  const [modal, setModal] = useState<'name' | 'shareOptions' | 'qr'>(
+    userName || typeParam === 'share' ? 'shareOptions' : 'name',
+  );
   const userNameText = userName.trim().length ? userName.trim() : null;
   const resultRef = useRef<HTMLDivElement>(null);
 
