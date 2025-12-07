@@ -25,7 +25,7 @@ export default function Share({
   const userNameText = userName.trim().length ? userName.trim() : null;
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const shareLink = `${import.meta.env.PROD ? import.meta.env.VITE_APP_URL : 'http://192.168.200.114:5173'}/result?mbti=${mbtiDetail.id}&name=${userNameText ?? ''}&type=share`;
+  const shareLink = `${import.meta.env.PROD ? import.meta.env.VITE_APP_URL : 'http://192.168.200.114:5173'}/result?mbti=${mbtiDetail.id}&name=${encodeURIComponent(userNameText ?? '')}&type=share`;
 
   function handleShare() {
     const shareText = userName
