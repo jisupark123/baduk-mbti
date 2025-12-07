@@ -56,7 +56,43 @@ export default function Share({
     onUserNameChange('');
   }
 
-  function handleSnsShare() {}
+  async function handleSnsShare() {
+    if (resultRef?.current) {
+      try {
+        const { toPng } = await import('html-to-image');
+        const toastId = toast.loading('공유 이미지 생성 중...');
+
+        const dataUrl = await toPng(resultRef.current, {
+          cacheBust: true,
+          pixelRatio: 2,
+          backgroundColor: '#f5f5f7',
+          style: {
+            margin: '0',
+            padding: '20px',
+          },
+        });
+
+        const response = await fetch(dataUrl);
+        const blob = await response.blob();
+        const file = new File([blob], `바둑_MBTI_${mbtiDetail.id}.png`, { type: 'image/png' });
+
+        toast.dismiss(toastId);
+
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: `바둑 MBTI - ${mbtiDetail.id}`,
+            text: `나의 바둑 MBTI는 ${mbtiDetail.id} (${mbtiDetail.name})입니다!`,
+          });
+        } else {
+          toast.error('이 기기에서는 이미지 공유를 지원하지 않습니다.');
+        }
+      } catch (error) {
+        console.error('공유 실패:', error);
+        toast.error('공유에 실패했습니다.');
+      }
+    }
+  }
   async function handleImgDownload() {
     if (resultRef?.current) {
       try {
