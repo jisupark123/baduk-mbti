@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 import NameModal from '@/pages/result/components/NameModal';
+import QR from '@/pages/result/components/QR';
 import ShareImageTemplate from '@/pages/result/components/ShareImageTemplate';
 import ShareOptionsModal from '@/pages/result/components/ShareOptionsModal';
 import type { MbtiDetail } from '@/types/mbti';
@@ -10,15 +11,21 @@ export default function Share({
   open,
   onOpenChange,
   mbtiDetail,
+  userName,
+  onUserNameChange,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   mbtiDetail: MbtiDetail;
+  userName: string;
+  onUserNameChange: (name: string) => void;
 }) {
-  const [modal, setModal] = useState<'name' | 'shareOptions'>('name');
-  const [userName, setUserName] = useState('');
+  // 이름이 이미 있으면 바로 공유 옵션 모달을 보여줌
+  const [modal, setModal] = useState<'name' | 'shareOptions' | 'qr'>(userName ? 'shareOptions' : 'name');
   const userNameText = userName.trim().length ? userName.trim() : null;
   const resultRef = useRef<HTMLDivElement>(null);
+
+  const shareLink = `${import.meta.env.PROD ? import.meta.env.VITE_APP_URL : 'http://192.168.200.114:5173'}/result?mbti=${mbtiDetail.id}&name=${userNameText ?? ''}&type=share`;
 
   function handleShare() {
     const shareText = userName
@@ -41,7 +48,7 @@ export default function Share({
     }
 
     onOpenChange(false);
-    setUserName('');
+    onUserNameChange('');
   }
 
   function handleSnsShare() {}
@@ -97,13 +104,9 @@ export default function Share({
     }
   }
 
-  function handleQrCodeShare() {}
   function handleCopyLink() {
-    const appUrl = import.meta.env.PROD ? import.meta.env.VITE_APP_URL : 'http://localhost:5173';
-    const link = `${appUrl}/share?mbti=${mbtiDetail.id}&name=${userNameText ?? ''}`;
-
     navigator.clipboard
-      .writeText(link)
+      .writeText(shareLink)
       .then(() => {
         toast.success('링크 복사 완료!', {
           description: '클립보드에 링크가 복사되었습니다',
@@ -133,7 +136,7 @@ export default function Share({
           open={open}
           onOpenChange={onOpenChange}
           userName={userName}
-          setUserName={setUserName}
+          setUserName={onUserNameChange}
           handleSubmit={() => setModal('shareOptions')}
         />
       )}
@@ -143,9 +146,12 @@ export default function Share({
           onOpenChange={onOpenChange}
           handleSnsShare={handleSnsShare}
           handleImgDownload={handleImgDownload}
-          handleQrCodeShare={handleQrCodeShare}
+          handleQrCodeShare={() => setModal('qr')}
           handleCopyLink={handleCopyLink}
         />
+      )}
+      {modal === 'qr' && (
+        <QR open={open} onOpenChange={onOpenChange} link={shareLink} goBack={() => setModal('shareOptions')} />
       )}
     </div>
   );

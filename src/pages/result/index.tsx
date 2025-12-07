@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BarChart3, Share2, Sparkles } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useNavigate, useSearchParams } from 'react-router';
 
 import { Badge } from '@/components/figma/badge';
 import { Button } from '@/components/figma/button';
@@ -13,16 +13,37 @@ import { formatPercentage } from '@/utils/formatPercentage';
 
 export default function Result() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const { state } = useLocation();
   const { data: mbtiStats, isLoading, isError } = useMbtiStats();
-  const testResult: Mbti | undefined = state?.testResult ?? 'ENFJ';
+
+  const mbtiParam = searchParams.get('mbti');
+  const nameParam = searchParams.get('name');
+  const typeParam = searchParams.get('type');
+
+  // mbtiParam이 유효한 Mbti 타입인지 확인하는 로직이 있으면 좋겠지만,
+  // 일단 기존 로직(testResult가 없으면 리다이렉트)에 의해 처리되도록 함.
+  // 단, 'ENFJ' 기본값은 제거하거나 유지할지 결정해야 함.
+  // 기존 코드: const testResult: Mbti | undefined = state?.testResult ?? 'ENFJ';
+  // query param이 없을 때 기본값을 주면 리다이렉트가 안 되므로,
+  // param이 없으면 undefined가 되게 하여 useEffect에서 처리하게 하거나,
+  // 유효하지 않은 값이면 'ENFJ'로 fallback 할 수도 있음.
+  // 사용자가 "state가 아니라 ?mbti=~~ 로 받도록" 이라고 했으므로, URL에 의존적이어야 함.
+  const testResult = (mbtiParam as Mbti) || 'ENFJ';
+
+  // name state를 여기서 관리 (URL param이 있으면 초기값으로 설정)
+  const [userName, setUserName] = useState(nameParam || '');
 
   useEffect(() => {
     if (!testResult) {
       navigate('/', { replace: true });
     }
-  }, [testResult, navigate]);
+
+    // type이 share이면 공유 모달 띄우기 (name 유무와 상관없이 share type이면 띄움)
+    if (typeParam === 'share') {
+      setIsShareModalOpen(true);
+    }
+  }, [testResult, navigate, typeParam]);
 
   const mbtiDetail = mbtiDetails.find((m) => m.id === testResult);
 
@@ -53,7 +74,9 @@ export default function Result() {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <div className='inline-block bg-white/20 backdrop-blur-sm px-4 py-2 md:px-6 md:py-2 rounded-full mb-5 md:mb-6'>
-                <span className='text-white/90 text-sm md:text-sm'>나의 바둑 MBTI</span>
+                <span className='text-white/90 text-md font-semibold'>
+                  {userName ? `${userName}님의` : '나의'} 바둑 MBTI
+                </span>
               </div>
               <h1 className='text-white mb-4 md:mb-4 tracking-widest text-6xl md:text-7xl'>{mbtiDetail.id}</h1>
               <h2 className='text-white/95 text-2xl md:text-3xl mb-3 md:mb-3'>{mbtiDetail.name}</h2>
@@ -152,7 +175,7 @@ export default function Result() {
         </motion.div>
       </div>
 
-      {/* 데스크탑/태블릿 레이아웃 (기존 유지) */}
+      {/* 데스크탑/태블릿 레이아웃 */}
       <div className='hidden md:grid max-w-6xl mx-auto grid-cols-1 md:grid-cols-3 gap-6 mb-12'>
         {/* 통계 카드 */}
         <motion.div
@@ -325,7 +348,15 @@ export default function Result() {
         </div>
       </motion.div>
 
-      {isShareModalOpen && <Share open={isShareModalOpen} onOpenChange={setIsShareModalOpen} mbtiDetail={mbtiDetail} />}
+      {isShareModalOpen && (
+        <Share
+          open={isShareModalOpen}
+          onOpenChange={setIsShareModalOpen}
+          mbtiDetail={mbtiDetail}
+          userName={userName}
+          onUserNameChange={setUserName}
+        />
+      )}
 
       {/* 다른 유형도 살펴보기 */}
       <motion.div

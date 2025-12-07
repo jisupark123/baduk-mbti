@@ -161,7 +161,7 @@ export default function App() {
       </motion.div>
 
       {/* 분석 중 모달 */}
-      <AnalyzingModal isOpen={!!testResult} onViewResult={() => navigate('/result', { state: { testResult } })} />
+      <AnalyzingModal isOpen={!!testResult} onViewResult={() => navigate(`/result?mbti=${testResult}`)} />
     </div>
   );
 }
