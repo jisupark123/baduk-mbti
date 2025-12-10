@@ -119,6 +119,7 @@ export default function Home() {
             size='lg'
             className='w-full bg-linear-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 py-6'
             onClick={() => setShowLevelModal(true)}
+            data-testid='start-button'
           >
             시작하기
           </Button>
