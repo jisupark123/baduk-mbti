@@ -27,6 +27,7 @@ export default function LevelModal({
             onClick={() => handleLevelSelect('beginner')}
             className='w-full py-8 bg-linear-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl transition-all duration-300'
             size='lg'
+            data-testid='level-beginner'
           >
             <div className='text-center'>
               <div>초급</div>
@@ -38,6 +39,7 @@ export default function LevelModal({
             onClick={() => handleLevelSelect('intermediate')}
             className='w-full py-8 bg-linear-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all duration-300'
             size='lg'
+            data-testid='level-intermediate'
           >
             <div className='text-center'>
               <div>중급</div>
@@ -49,6 +51,7 @@ export default function LevelModal({
             onClick={() => handleLevelSelect('advanced')}
             className='w-full py-8 bg-linear-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-300'
             size='lg'
+            data-testid='level-advanced'
           >
             <div className='text-center'>
               <div>고급</div>
