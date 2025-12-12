@@ -19,7 +19,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '상대 집을 먼저 부수러 가는 적극적인 수',
         B: '내 집을 지키는 안전한 수',
       },
-      imagePath: '/beginner/1.webp',
+      imagePath: '/questions/beginner/1.webp',
     },
     {
       title: 'Q2',
@@ -29,7 +29,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '당장 확실한 집을 지키기보단 미래를 위한 투자',
         B: '일단 내 집을 안전하게 확보하는 수',
       },
-      imagePath: '/beginner/2.webp',
+      imagePath: '/questions/beginner/2.webp',
     },
     {
       title: 'Q3',
@@ -39,7 +39,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다.',
         B: '좀 더 효율적인 수를 추구하나 나중에 득인지는 모른다.',
       },
-      imagePath: '/beginner/3.webp',
+      imagePath: '/questions/beginner/3.webp',
     },
     {
       title: 'Q4',
@@ -49,7 +49,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '갑자기 오늘따라 A가 땡김',
         B: '원래 생각대로 B를 두고 싶음',
       },
-      imagePath: '/beginner/4.webp',
+      imagePath: '/questions/beginner/4.webp',
     },
   ],
 
@@ -63,7 +63,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '상대 집을 먼저 부수러 가는 적극적인 수',
         B: '내 집을 지키는 안전한 수',
       },
-      imagePath: '/intermediate/1.webp',
+      imagePath: '/questions/intermediate/1.webp',
     },
     {
       title: 'Q2',
@@ -73,7 +73,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '실리를 내주고 두터움을 얻는 수',
         B: '일단 내 집을 확보하는 수',
       },
-      imagePath: '/intermediate/2.webp',
+      imagePath: '/questions/intermediate/2.webp',
     },
     {
       title: 'Q3',
@@ -83,7 +83,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '지금 당장 백 돌을 잡아서 득을 볼 수 있다.',
         B: '좀 더 효율적인 수를 추구하나 나중에 득인지는 모른다.',
       },
-      imagePath: '/intermediate/3.webp',
+      imagePath: '/questions/intermediate/3.webp',
     },
     {
       title: 'Q4',
@@ -93,7 +93,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '갑자기 오늘따라 A가 땡김',
         B: '원래 생각대로 B를 두고 싶음',
       },
-      imagePath: '/intermediate/4.webp',
+      imagePath: '/questions/intermediate/4.webp',
     },
   ],
 
@@ -107,7 +107,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '상대 집을 부수러 가는 적극적인 수',
         B: '내 모양을 지키는 안정적인 수',
       },
-      imagePath: '/advanced/1.webp',
+      imagePath: '/questions/advanced/1.webp',
     },
     {
       title: 'Q2',
@@ -117,7 +117,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '실리를 내주고 주도권을 잡는 수',
         B: '안정적으로 내 돌을 살리는 수',
       },
-      imagePath: '/advanced/2.webp',
+      imagePath: '/questions/advanced/2.webp',
     },
     {
       title: 'Q3',
@@ -127,7 +127,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '내 집을 확실하게 지켜놓을 수 있다.',
         B: '좀 더 효율적인 수를 추구하나 나중에 득인지는 모른다.',
       },
-      imagePath: '/advanced/3.webp',
+      imagePath: '/questions/advanced/3.webp',
     },
     {
       title: 'Q4',
@@ -137,7 +137,7 @@ export const QUESTIONS: Record<Level, QuestionData[]> = {
         A: '오늘따라 A로 변화해보고 싶음',
         B: '원래 정석대로 B를 두고 싶음',
       },
-      imagePath: '/advanced/4.webp',
+      imagePath: '/questions/advanced/4.webp',
     },
   ],
 };
