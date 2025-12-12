@@ -28,9 +28,10 @@ const ShareImageTemplate = forwardRef<HTMLDivElement, ShareImageTemplateProps>((
 
             <div className='relative px-6 py-12 text-center'>
               <div className='inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4'>
-                <span className='text-white/90 text-md font-semibold'>
-                  {userName ? userName + '님의' : '나의'} 바둑 MBTI
-                </span>
+                <div className='text-white/90'>
+                  {userName && <span className='text-lg font-bold'>{userName}</span>}
+                  <span className='text-base font-semibold'>{userName ? '님의' : '나의'} 바둑 MBTI</span>
+                </div>
               </div>
               <h1 className='text-white mb-3 tracking-widest text-5xl font-bold'>{mbtiDetail.id}</h1>
               <h2 className='text-white/95 text-xl font-medium mb-2'>{mbtiDetail.name}</h2>

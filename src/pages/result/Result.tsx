@@ -74,9 +74,10 @@ export default function Result() {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <div className='inline-block bg-white/20 backdrop-blur-sm px-4 py-2 md:px-6 md:py-2 rounded-full mb-5 md:mb-6'>
-                <span className='text-white/90 text-md font-semibold'>
-                  {userName ? `${userName}님의` : '나의'} 바둑 MBTI
-                </span>
+                <div className='text-white/90'>
+                  {userName && <span className='text-lg font-bold'>{userName}</span>}
+                  <span className='text-base font-semibold'>{userName ? '님의' : '나의'} 바둑 MBTI</span>
+                </div>
               </div>
               <h1 className='text-white mb-4 md:mb-4 tracking-widest text-6xl md:text-7xl'>{mbtiDetail.id}</h1>
               <h2 className='text-white/95 text-2xl md:text-3xl mb-3 md:mb-3'>{mbtiDetail.name}</h2>
