@@ -1,6 +1,7 @@
 class DateString {
-  static nowString() {
-    return new Date().toISOString();
+  static nowSeoulDateString() {
+    const now = new Date();
+    return now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
   }
 
   static toDate(isoString: string) {

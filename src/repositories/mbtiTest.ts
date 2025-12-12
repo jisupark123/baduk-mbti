@@ -13,6 +13,7 @@ type MbtiTest = {
   level: Level;
   result: Mbti; // mbti 테스트 결과
   createdAt: string; // 테스트 날짜
+  isDev: boolean; // 개발 환경 여부
 };
 
 class MbtiTestRepository {
@@ -23,6 +24,7 @@ class MbtiTestRepository {
       level: doc.data().level,
       result: doc.data().result,
       createdAt: doc.data().createdAt,
+      isDev: doc.data().isDev,
     }));
     return allMbtiTests;
   }
@@ -36,13 +38,19 @@ class MbtiTestRepository {
       level: doc.data().level,
       result: doc.data().result,
       createdAt: doc.data().createdAt,
+      isDev: doc.data().isDev,
     }));
     return mbtiTests;
   }
 
   async save(level: Level, result: Mbti): Promise<void> {
     const collectionRef = collection(firestoreDB, COLLECTION_NAME);
-    await addDoc(collectionRef, { level, result, createdAt: DateString.nowString() });
+    await addDoc(collectionRef, {
+      level,
+      result,
+      createdAt: DateString.nowSeoulDateString(),
+      isDev: import.meta.env.DEV,
+    });
   }
 }
 

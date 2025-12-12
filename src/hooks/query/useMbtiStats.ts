@@ -17,7 +17,8 @@ export const useMbtiStats = () =>
       try {
         // 1. 전체 테스트 결과 조회
         const allTests = await mbtiTestRepository.findAll();
-        const total = allTests.length;
+        const validTests = allTests.filter((test) => test.isDev === false);
+        const total = validTests.length;
 
         // 2. 모든 MBTI 유형의 카운트를 0으로 초기화
         // (데이터가 없는 유형도 0%로 표시하기 위함)
@@ -34,7 +35,7 @@ export const useMbtiStats = () =>
         }
 
         // 3. 각 MBTI 유형별 득표수 계산
-        const counts = allTests.reduce((acc, test) => {
+        const counts = validTests.reduce((acc, test) => {
           const mbti = test.result;
           if (acc[mbti] !== undefined) {
             acc[mbti]++;
