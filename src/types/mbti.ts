@@ -37,7 +37,8 @@ export type MbtiDetail = {
   category: MbtiCategoryId;
   name: string;
   desc: string;
-  proPlayer: string;
+  proPlayerName: string;
+  proPlayerImagePath: string;
   hashtags: string[];
   detailedDesc: string;
 };

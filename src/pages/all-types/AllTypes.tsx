@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { MBTIDetailModal } from '@/components/MBTIDetailModal';
 import { mbtiCategories, mbtiCategoryThemes, mbtiDetails } from '@/data/mbtiData';
+import { MBTIDetailModal } from '@/pages/all-types/components/MBTIDetailModal';
 
 export default function AllTypes() {
   const [selectedTypeIndex, setSelectedTypeIndex] = useState<number | null>(null); // ISTP index

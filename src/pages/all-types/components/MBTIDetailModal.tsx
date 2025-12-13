@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { BarChart3, X } from 'lucide-react';
 
 import { Badge } from '@/components/figma/badge';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/figma/dialog';
@@ -68,8 +68,13 @@ export function MBTIDetailModal({ isOpen, onClose, type, color }: MBTIDetailModa
             >
               <div className='grid grid-cols-2 gap-6'>
                 {/* 비율 */}
-                <div className='text-center'>
-                  <div className='text-gray-500 text-sm mb-1'>전체 사용자 비율</div>
+                <div className='flex flex-col items-center text-center'>
+                  <div className='text-gray-500 text-sm mb-3'>전체 사용자 비율</div>
+                  <div
+                    className={`w-16 h-16 rounded-full bg-linear-to-br ${color} flex items-center justify-center shadow-md mb-2`}
+                  >
+                    <BarChart3 className='w-8 h-8 text-white' strokeWidth={2} />
+                  </div>
                   {isLoading ? (
                     <div className='h-6 w-12 mx-auto bg-gray-200 rounded animate-pulse' />
                   ) : isError ? (
@@ -81,10 +86,17 @@ export function MBTIDetailModal({ isOpen, onClose, type, color }: MBTIDetailModa
                   )}
                 </div>
 
-                {/* 대표 프로기사 */}
-                <div className='text-center'>
-                  <div className='text-gray-500 text-sm mb-1'>대표 프로기사</div>
-                  <div className='text-gray-800'>{type.proPlayer}</div>
+                {/* 대표 기사 */}
+                <div className='flex flex-col items-center text-center'>
+                  <div className='text-gray-500 text-sm mb-3'>대표 기사</div>
+                  <div className='w-16 h-16 rounded-full overflow-hidden shadow-md mb-2'>
+                    <img
+                      src={type.proPlayerImagePath}
+                      alt={type.proPlayerName}
+                      className='w-full h-full object-cover'
+                    />
+                  </div>
+                  <div className='text-gray-800'>{type.proPlayerName}</div>
                 </div>
               </div>
             </motion.div>

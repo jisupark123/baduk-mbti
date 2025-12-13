@@ -12,7 +12,7 @@ interface ShareImageTemplateProps {
 }
 
 const ShareImageTemplate = forwardRef<HTMLDivElement, ShareImageTemplateProps>(({ userName, mbtiDetail }, ref) => {
-  const { data: mbtiStats } = useMbtiStats();
+  const { data: mbtiStats, isLoading, isError } = useMbtiStats();
 
   const theme = mbtiCategoryThemes[mbtiDetail.category];
 
@@ -50,15 +50,28 @@ const ShareImageTemplate = forwardRef<HTMLDivElement, ShareImageTemplateProps>((
               <BarChart3 size={20} strokeWidth={2.5} />
             </div>
             <div className='flex-1 grid grid-cols-2 gap-2'>
-              <div className='bg-gray-50 rounded-lg p-2.5'>
-                <div className='text-gray-400 text-[10px] mb-0.5'>사용자 비율</div>
-                <div className={`text-xl font-bold bg-linear-to-r ${theme.color} bg-clip-text text-transparent`}>
-                  {mbtiStats ? `${formatPercentage(mbtiStats[mbtiDetail.id])}%` : '-'}
-                </div>
+              <div className='bg-linear-to-br from-gray-50 to-gray-100 rounded-lg p-2.5'>
+                <div className='text-gray-500 text-xs mb-0.5'>사용자 비율</div>
+                {isLoading ? (
+                  <div className='h-6 w-12 mx-auto bg-gray-200 rounded animate-pulse' />
+                ) : isError ? (
+                  <div className='text-gray-400'>-</div>
+                ) : (
+                  <div className={`text-2xl bg-linear-to-r ${theme.color} bg-clip-text text-transparent`}>
+                    {formatPercentage(mbtiStats?.[mbtiDetail.id])}%
+                  </div>
+                )}
               </div>
-              <div className='bg-gray-50 rounded-lg p-2.5'>
-                <div className='text-gray-400 text-[10px] mb-0.5'>대표 기사</div>
-                <div className='text-gray-700 text-sm font-bold truncate'>{mbtiDetail.proPlayer}</div>
+              <div className='bg-linear-to-br from-gray-50 to-gray-100 rounded-lg p-2.5'>
+                <div className='text-gray-500 text-xs mb-0.5'>대표 기사</div>
+                <div className='w-12 h-12 rounded-full overflow-hidden shadow-md mb-1.5'>
+                  <img
+                    src={mbtiDetail.proPlayerImagePath}
+                    alt={mbtiDetail.proPlayerName}
+                    className='w-full h-full object-cover'
+                  />
+                </div>
+                <div className='text-gray-800 text-base leading-tight'>{mbtiDetail.proPlayerName}</div>
               </div>
             </div>
           </div>

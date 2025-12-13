@@ -127,8 +127,15 @@ export default function Result() {
                 )}
               </div>
               <div className='bg-linear-to-br from-gray-50 to-gray-100 rounded-lg p-3'>
-                <div className='text-gray-500 text-xs mb-1'>대표 기사</div>
-                <div className='text-gray-800 text-base leading-tight'>{mbtiDetail.proPlayer}</div>
+                <div className='text-gray-500 text-xs mb-2'>대표 기사</div>
+                <div className='w-12 h-12 rounded-full overflow-hidden shadow-md mb-1.5'>
+                  <img
+                    src={mbtiDetail.proPlayerImagePath}
+                    alt={mbtiDetail.proPlayerName}
+                    className='w-full h-full object-cover'
+                  />
+                </div>
+                <div className='text-gray-800 text-base leading-tight'>{mbtiDetail.proPlayerName}</div>
               </div>
             </div>
           </div>
@@ -219,10 +226,21 @@ export default function Result() {
               )}
             </div>
 
-            {/* 대표 프로기사 */}
+            {/* 대표 기사 */}
             <div className='bg-linear-to-br from-gray-50 to-gray-100 rounded-xl p-6 text-center'>
-              <div className='text-gray-500 text-sm mb-2'>대표 프로기사</div>
-              <div className='text-gray-800 text-xl'>{mbtiDetail.proPlayer}</div>
+              <div className='text-gray-500 text-sm mb-4'>대표 기사</div>
+              <motion.div
+                className='w-24 h-24 mx-auto rounded-full overflow-hidden shadow-lg mb-3'
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <img
+                  src={mbtiDetail.proPlayerImagePath}
+                  alt={mbtiDetail.proPlayerName}
+                  className='w-full h-full object-cover'
+                />
+              </motion.div>
+              <div className='text-gray-800 text-lg'>{mbtiDetail.proPlayerName}</div>
             </div>
           </div>
         </motion.div>
