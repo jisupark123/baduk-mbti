@@ -30,31 +30,11 @@ export default function Share({
   const userNameText = userName.trim().length ? userName.trim() : null;
   const resultRef = useRef<HTMLDivElement>(null);
 
+  // 공유 링크 생성
   const shareLink = `${import.meta.env.PROD ? import.meta.env.VITE_APP_URL : 'http://192.168.200.114:5173'}/result?mbti=${mbtiDetail.id}&name=${encodeURIComponent(userNameText ?? '')}&type=share`;
 
-  function handleShare() {
-    const shareText = userName
-      ? `${userName}님의 바둑 MBTI는 ${mbtiDetail.id} (${mbtiDetail.name})입니다! 당신의 바둑 스타일은?`
-      : `나의 바둑 MBTI는 ${mbtiDetail.id} (${mbtiDetail.name})입니다! 당신의 바둑 스타일은?`;
-
-    // Web Share API 지원 확인
-    if (navigator.share) {
-      navigator
-        .share({
-          title: `바둑으로 알아보는 MBTI - ${userName ? userName + '님은' : '나는'} ${mbtiDetail.id}`,
-          text: shareText,
-          url: window.location.href,
-        })
-        .catch((error) => console.log('공유 취소:', error));
-    } else {
-      // Web Share API 미지원 시 URL 복사
-      navigator.clipboard.writeText(window.location.href);
-      alert('링크가 클립보드에 복사되었습니다!');
-    }
-
-    onOpenChange(false);
-    onUserNameChange('');
-  }
+  // 파일명
+  const fileName = `${userNameText ? userNameText + '님' : '나'}의_바둑_MBTI`;
 
   async function handleSnsShare() {
     if (resultRef?.current) {
@@ -74,7 +54,7 @@ export default function Share({
 
         const response = await fetch(dataUrl);
         const blob = await response.blob();
-        const file = new File([blob], `바둑_MBTI_${mbtiDetail.id}.png`, { type: 'image/png' });
+        const file = new File([blob], `${fileName}.png`, { type: 'image/png' });
 
         toast.dismiss(toastId);
 
@@ -121,7 +101,7 @@ export default function Share({
         // 직접 다운로드 시도 (모바일에서도 공유하기 창 대신 다운로드 유도)
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = `바둑_MBTI_${mbtiDetail.id}.png`;
+        link.download = `${fileName}.png`;
         link.href = url;
         document.body.appendChild(link);
         link.click();
